@@ -1,6 +1,8 @@
 ---
 title: Base Logging
-sort_info: 100
+menu_title: Debugging Techniques
+sort_info: 30
+group: addons
 ---
 
 Introduction

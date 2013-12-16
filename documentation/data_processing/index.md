@@ -1,6 +1,7 @@
 ---
-title: Data Acquisition
+title: Data Processing
 sort_info: 0
+group: addons
 ---
 
 These pages will guide through the tools that are available to do data

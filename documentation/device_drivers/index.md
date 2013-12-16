@@ -1,6 +1,8 @@
 ---
 title: Introduction
-sort_info: 0
+menu_title: Device Drivers
+sort_info: 10
+group: addons
 ---
 
 This section will discuss some of the aspects of writing device drivers in Rock.

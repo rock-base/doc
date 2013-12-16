@@ -1,6 +1,7 @@
 ---
 title: Installation
-sort_info: 50
+sort_info: 10
+group: intro
 ---
 
 This page explains how to install Rock and where to look for more

@@ -1,6 +1,8 @@
 ---
 title: The Workflow
-sort_info: 0
+menu_title: Developing Components
+sort_info: 20
+group: core
 ---
 
 What are oroGen and typeGen

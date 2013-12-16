@@ -1,6 +1,8 @@
 ---
 title: Overview
-sort_info: 0
+menu_title: Envire
+sort_info: 20
+group: addons
 ---
 
 Envire Rationale

@@ -1,6 +1,8 @@
 ---
 title: Overview
-sort_info: 0
+menu_title: Data Analysis
+sort_info: 50
+group: core
 ---
 
 Data Analysis

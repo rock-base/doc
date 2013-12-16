@@ -1,6 +1,8 @@
 ---
 title: Introduction
-sort_info: 0
+menu_title: System Management
+sort_info: 40
+group: core
 ---
 
 While one can use Syskit, Rock's system management layer, without knowing the

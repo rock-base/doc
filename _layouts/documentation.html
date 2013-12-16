@@ -3,15 +3,17 @@ layout: default
 ---
 <div class="leftnav">
     <div class="menu">
-        {% menu toc %}
+        <ul>{% menu toc %}</ul>
         <div class="title">Intro</div>
-        {% menu intro %}
+        <ul>{% menu intro %}
+            <li class="level1"><a href="{% relocatable /pkg %}">Packages API</a></li>
+        </ul>
         <div class="title">Tutorials</div>
-        {% menu tutorials %}
+        <ul>{% menu tutorials %}</ul>
         <div class="title">Core</div>
-        {% menu core %}
+        <ul>{% menu core %}</ul>
         <div class="title">Additional Core Functionality</div>
-        {% menu addons %}
+        <ul>{% menu addons %}</ul>
     </div>
 </div>
 

@@ -1,6 +1,7 @@
 ---
-title: Introduction
+title: Basics
 sort_info: 0
+group: tutorials
 ---
 
 Rock Tutorials

@@ -1,6 +1,7 @@
 ---
 title: Base Types
-sort_info: 100
+sort_info: 0
+group: core
 ---
 
 Introduction

@@ -1,6 +1,8 @@
 ---
 title: Overview
-sort_info: 0
+menu_title: Graphical User Interface
+sort_info: 60
+group: core
 ---
 
 ![Overview](0_overview.png)

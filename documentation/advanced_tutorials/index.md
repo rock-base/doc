@@ -1,10 +1,9 @@
 ---
-title: Introduction
-sort_info: 0
+title: Advanced Tutorials
+sort_info: 10
+group: tutorials
 ---
 
-Advanced Rock Tutorials
---------------------------
 After successfully gone through the [basic
 tutorials](/documentation/tutorials/index.html)  you might be interested in
 going deeper into rock.  Tutorials in this section deal with more advanced

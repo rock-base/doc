@@ -1,6 +1,7 @@
 ---
 title: What is Rock? 
 sort_info: 0
+group: intro
 ---
 
 Overview

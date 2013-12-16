@@ -1,6 +1,7 @@
 ---
-title: The ROS-Rock Bridge
-sort_info: 0
+title: The ROS/Rock Bridge
+sort_info: 40
+group: addons
 ---
 
 This section of the documentation will detail how to integrate ROS within a Rock

@@ -1,6 +1,7 @@
 ---
-title: Introduction
-sort_info: 0
+title: System Management Tutorials
+sort_info: 20
+group: tutorials
 ---
 Until now you have been writing down detailled instructions on how to bind 
 components together using a Ruby script. 

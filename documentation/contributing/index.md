@@ -1,7 +1,7 @@
 ---
 title: Contributing
-sort_info: 0
-in_menu: false
+sort_info: 30
+group: intro
 ---
 There are multiple ways to contribute to Rock
 

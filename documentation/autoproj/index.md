@@ -1,6 +1,8 @@
 ---
 title: Introduction
-sort_info: 0
+menu_title: Build System
+sort_info: 10
+group: core
 ---
 
 What is Autoproj

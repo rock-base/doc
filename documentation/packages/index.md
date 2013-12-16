@@ -1,7 +1,7 @@
 ---
 title: Managing Packages
-sort_info: 0
-in_menu: false
+sort_info: 20
+group: intro
 ---
 
 There are mainly four types of packages in Rock:

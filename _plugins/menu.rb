@@ -15,9 +15,10 @@ module Rock
                     page_url   = Pathname.new(context.environments.first['page']['url'])
                     target_url = Pathname.new(page.url)
                     path = target_url.relative_path_from(page_url.dirname).to_s
-                    "<a href=\"#{path}\">#{page.data['title']}</a>"
+                    title = page.data['menu_title'] || page.data['title']
+                    ["<li class=\"level1\"><a href=\"#{path}\">#{title}</a></li>", Integer(page.data['sort_info'] || 1000000)]
                 end
-                links.join("\n")
+                links.sort_by(&:last).map(&:first).join("")
             end
         end
     end

@@ -1,6 +1,8 @@
 ---
 title: Introduction
-sort_info: 0
+menu_title: Running Components
+sort_info: 30
+group: core
 ---
 
 Running components using Ruby

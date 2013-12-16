@@ -1,5 +1,7 @@
 ---
 title: Overview 
+sort_info: -1
+group: intro
 ---
 
 Rock offers both a __rich development environment__ and a collection of
