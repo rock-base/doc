@@ -8,7 +8,7 @@
     google.search.CustomSearchControl('008757635177184297913:WMX139135563');
         customSearchControl.setResultSetSize(google.search.Search.LARGE_RESULTSET);
         var options = new google.search.DrawOptions();
-        options.enableSearchboxOnly("search_results.html");
+        options.enableSearchboxOnly("{% relocatable /search_results.html %}");
         customSearchControl.draw('cse-search-form', options);
       }, true);
     </script>
