@@ -1,9 +1,0 @@
-<package>
-  <description brief="source pages for the rock-robotics.org website">
-  </description>
-  <author>Rock Developers/rock-dev@dfki.de</author>
-  <license>LGPLv2 or later</license>
-  <url>http://rock-robotics.org/documentation/contributing/documentation.html</url>
-  <depend package="webgen" />
-  <depend package="coderay" />
-</package>
