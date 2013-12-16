@@ -95,32 +95,32 @@ body {margin: 0px auto; padding: 0px; background: url(img/background_body_grey.g
 /* 2.5 - Navigation - Level 3 */
 /*----------------------------*/
 
-.nav3 {min-height: 500px; margin: 0px; padding: 0px; color: rgb(75,75,75); font-size: 90%; font-family: arial, sans serif; }
-.nav3 ul {width: 250px; margin: 0px 0px 5px 0px; padding: 0px; border-bottom: solid 1px rgb(216,206,159); background-color: rgb(219,230,241);}	
-.nav3 li {list-style: none; margin: 0px; padding: 0px; font-size: 100%;}
-.nav3 .title {margin: 0px 0px 0px 0px; padding: 3px 5px 2px 15px; background-color: rgb(156,186,214); color: rgb(255,255,255); text-transform: uppercase; font-weight: bold; font-size: 100%;}
+.menu {min-height: 500px; margin: 0px; padding: 0px; color: rgb(75,75,75); font-size: 90%; font-family: arial, sans serif; }
+.menu ul {width: 250px; margin: 0px 0px 5px 0px; padding: 0px; border-bottom: solid 1px rgb(216,206,159); background-color: rgb(219,230,241);}	
+.menu li {list-style: none; margin: 0px; padding: 0px; font-size: 100%;}
+.menu .title {margin: 0px 0px 0px 0px; padding: 3px 5px 2px 15px; background-color: rgb(156,186,214); color: rgb(255,255,255); text-transform: uppercase; font-weight: bold; font-size: 100%;}
 
-.nav3 a, .nav3 span {display: block; min-height: 1.7em; height: auto !important; height: 1.7em; line-height: 1.7em; margin: 0px; color: rgb(75,75,75); bold; font-size: 100%; text-decoration: none; border-left: solid 7px rgb(219,230,241); padding: 0px 7px 0px 0px; }
-.nav3 li.webgen-menu-level1 a, .nav3 li.webgen-menu-level1 span {
+.menu a, .menu span {display: block; min-height: 1.7em; height: auto !important; height: 1.7em; line-height: 1.7em; margin: 0px; color: rgb(75,75,75); bold; font-size: 100%; text-decoration: none; border-left: solid 7px rgb(219,230,241); padding: 0px 7px 0px 0px; }
+.menu li.level1 a, .menu li.level1 span {
     padding-left: 5px; border-top: solid 1px rgb(200,200,200); font-weight: bold;
 }
-.nav3 li.webgen-menu-level2 a, .nav3 li.webgen-menu-level2 span {
+.menu li.level2 a, .menu li.level2 span {
     padding-left: 10px; font-weight: normal;
 }
-.nav3 li.webgen-menu-level3 a, .nav3 li.webgen-menu-level3 span {
+.menu li.level3 a, .menu li.level3 span {
     padding-left: 15px; font-weight: normal; font-size: 90%;
 }
 
-.nav3 li.webgen-menu-level1.webgen-menu-submenu-inhierarchy > span,
-.nav3 li.webgen-menu-level1.webgen-menu-submenu-inhierarchy > a {
+.menu li.level1.submenu-inhierarchy > span,
+.menu li.level1.submenu-inhierarchy > a {
     padding-left: 0px;
 }
-.nav3 li.webgen-menu-level2.webgen-menu-submenu-inhierarchy > span,
-.nav3 li.webgen-menu-level2.webgen-menu-submenu-inhierarchy > a {
+.menu li.level2.submenu-inhierarchy > span,
+.menu li.level2.submenu-inhierarchy > a {
     padding-left: 5px;
 }
-.nav3 li.webgen-menu-submenu-inhierarchy {border-left: solid 5px rgb(156,186,214);  color: rgb(100,100,100);}
-.nav3 li.webgen-menu-item-selected > span {font-weight: bold;}
+.menu li.submenu-inhierarchy {border-left: solid 5px rgb(156,186,214);  color: rgb(100,100,100);}
+.menu li.item-selected > span {font-weight: bold;}
 
 /*----------------------------*/
 /* 2.5 - Navigation - Level 4 */
@@ -129,11 +129,11 @@ body {margin: 0px auto; padding: 0px; background: url(img/background_body_grey.g
 .nav4 ul {width: 250px; margin: 0px 0px 20px 0px; padding: 0px; border-bottom: solid 1px rgb(216,206,159); background-color: rgb(219,230,241);}	
 .nav4 li {list-style: none; margin: 0px; padding: 0px; font-size: 100%;}
 .nav4 li.title {margin: 0px 0px 0px 0px; padding: 3px 5px 2px 15px; background-color: rgb(156,186,214); color: rgb(255,255,255); text-transform: uppercase; font-size: 100%;}
-.nav4 li.webgen-menu-level1 a    {display: block; min-height: 1.7em; height: auto !important; height: 1.7em; line-height: 1.7em; margin: 0px; padding: 0px 7px 0px 5px; border-top: solid 1px rgb(200,200,200); border-left: solid 7px rgb(219,230,241); color: rgb(75,75,75); font-size: 100%; text-decoration: none; }
-.nav4 li.webgen-menu-level2 a    {display: block; min-height: 1.7em; height: auto !important; height: 1.7em; line-height: 1.7em; margin: 0px; padding: 0px 7px 0px 20px; border-left: solid 7px rgb(219,230,241); color: rgb(75,75,75); text-decoration: none; font-weight: normal; font-size: 90%; text-decoration: none;}
-.nav4 li.webgen-menu-level1 span {display: block; min-height: 1.7em; height: auto !important; height: 1.7em; line-height: 1.7em; margin: 0px; padding: 0px 7px 0px 5px; border-top: solid 1px rgb(200,200,200); border-left: solid 7px rgb(219,230,241); color: rgb(75,75,75); font-size: 100%;}
-.nav4 li.webgen-menu-level2 span {display: block; min-height: 1.7em; height: auto !important; height: 1.7em; line-height: 1.7em; margin: 0px; padding: 0px 7px 0px 20px; border-left: solid 7px rgb(219,230,241); color: rgb(75,75,75); text-decoration: none; font-size: 90%;}
-.nav4 li a:hover, .nav4 li.webgen-menu-level2.webgen-menu-submenu-inhierarchy, .nav4 li.webgen-menu-item-selected {border-left: solid 7px rgb(156,186,214);  color: rgb(100,100,100); text-decoration: none;}
+.nav4 li.level1 a    {display: block; min-height: 1.7em; height: auto !important; height: 1.7em; line-height: 1.7em; margin: 0px; padding: 0px 7px 0px 5px; border-top: solid 1px rgb(200,200,200); border-left: solid 7px rgb(219,230,241); color: rgb(75,75,75); font-size: 100%; text-decoration: none; }
+.nav4 li.level2 a    {display: block; min-height: 1.7em; height: auto !important; height: 1.7em; line-height: 1.7em; margin: 0px; padding: 0px 7px 0px 20px; border-left: solid 7px rgb(219,230,241); color: rgb(75,75,75); text-decoration: none; font-weight: normal; font-size: 90%; text-decoration: none;}
+.nav4 li.level1 span {display: block; min-height: 1.7em; height: auto !important; height: 1.7em; line-height: 1.7em; margin: 0px; padding: 0px 7px 0px 5px; border-top: solid 1px rgb(200,200,200); border-left: solid 7px rgb(219,230,241); color: rgb(75,75,75); font-size: 100%;}
+.nav4 li.level2 span {display: block; min-height: 1.7em; height: auto !important; height: 1.7em; line-height: 1.7em; margin: 0px; padding: 0px 7px 0px 20px; border-left: solid 7px rgb(219,230,241); color: rgb(75,75,75); text-decoration: none; font-size: 90%;}
+.nav4 li a:hover, .nav4 li.level2.submenu-inhierarchy, .nav4 li.item-selected {border-left: solid 7px rgb(156,186,214);  color: rgb(100,100,100); text-decoration: none;}
 
 .localtoc {float: left; width: 150px; margin: 0em 2em 1em 0em; padding: 0 0 0 0; background-color: rgb(238,237,249); font-size: 1.0em;}
 .localtoc ul {width: 150px; margin: 5px 0px 0px 0px; padding: 0px; border-bottom: solid 1px rgb(216,206,159); background-color: rgb(219,230,241);}
@@ -151,11 +151,11 @@ body {margin: 0px auto; padding: 0px; background: url(img/background_body_grey.g
 
 .localtoc li {list-style: none; margin: 0px; padding: 0px;}
 .localtoc li.title {margin: 0px 0px 0px 0px; padding: 3px 5px 2px 15px; background-color: rgb(156,186,214); color: rgb(255,255,255); text-transform: uppercase; font-weight: bold; font-size: 120%;}
-.localtoc li.webgen-menu-level1 a    {display: block; min-height: 1.7em; height: auto !important; height: 1.7em; line-height: 1.7em; margin: 0px; padding: 0px 7px 0px 10px; border-top: solid 1px rgb(200,200,200); border-left: solid 7px rgb(219,230,241); color: rgb(75,75,75); font-weight: normal; font-size: 100%; text-decoration: none;}
-.localtoc li.webgen-menu-level2 a    {display: block; min-height: 1.7em; height: auto !important; height: 1.7em; line-height: 1.7em; margin: 0px; padding: 0px 7px 0px 20px; border-left: solid 7px rgb(219,230,241); color: rgb(75,75,75); text-decoration: none; font-weight: normal; font-size: 80%; text-decoration: none;}
-.localtoc li.webgen-menu-level1 span {display: block; min-height: 1.7em; height: auto !important; height: 1.7em; line-height: 1.7em; margin: 0px; padding: 0px 7px 0px 15px; border-top: solid 1px rgb(200,200,200); border-left: solid 7px rgb(219,230,241); color: rgb(75,75,75); font-size: 100%;}
-.localtoc li.webgen-menu-level2 span {display: block; min-height: 1.7em; height: auto !important; height: 1.7em; line-height: 1.7em; margin: 0px; padding: 0px 7px 0px 20px; border-left: solid 7px rgb(219,230,241); color: rgb(75,75,75); text-decoration: none; font-size: 80%;}
-.localtoc li a:hover, .localtoc li.webgen-menu-item-selected {border-left: solid 7px rgb(156,186,214);  color: rgb(100,100,100); text-decoration: none;}
+.localtoc li.level1 a    {display: block; min-height: 1.7em; height: auto !important; height: 1.7em; line-height: 1.7em; margin: 0px; padding: 0px 7px 0px 10px; border-top: solid 1px rgb(200,200,200); border-left: solid 7px rgb(219,230,241); color: rgb(75,75,75); font-weight: normal; font-size: 100%; text-decoration: none;}
+.localtoc li.level2 a    {display: block; min-height: 1.7em; height: auto !important; height: 1.7em; line-height: 1.7em; margin: 0px; padding: 0px 7px 0px 20px; border-left: solid 7px rgb(219,230,241); color: rgb(75,75,75); text-decoration: none; font-weight: normal; font-size: 80%; text-decoration: none;}
+.localtoc li.level1 span {display: block; min-height: 1.7em; height: auto !important; height: 1.7em; line-height: 1.7em; margin: 0px; padding: 0px 7px 0px 15px; border-top: solid 1px rgb(200,200,200); border-left: solid 7px rgb(219,230,241); color: rgb(75,75,75); font-size: 100%;}
+.localtoc li.level2 span {display: block; min-height: 1.7em; height: auto !important; height: 1.7em; line-height: 1.7em; margin: 0px; padding: 0px 7px 0px 20px; border-left: solid 7px rgb(219,230,241); color: rgb(75,75,75); text-decoration: none; font-size: 80%;}
+.localtoc li a:hover, .localtoc li.item-selected {border-left: solid 7px rgb(156,186,214);  color: rgb(100,100,100); text-decoration: none;}
 
 /******************************************************************************/
 /* SECTION 3 - SPECIFIC CLASSES FOR LAYOUT #1 (With navigation, with sidebar )*/
