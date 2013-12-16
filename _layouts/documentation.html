@@ -1,0 +1,35 @@
+---
+layout: default
+---
+<div class="leftnav">
+    <div class="nav3">
+        {% menu toc %}
+        <div class="title">Intro</div>
+        {% menu intro %}
+        <div class="title">Tutorials</div>
+        {% menu tutorials %}
+        <div class="title">Core</div>
+        {% menu core %}
+        <div class="title">Additional Core Functionality</div>
+        {% menu addons %}
+    </div>
+</div>
+
+    
+<div class="content2">
+    {% if page.page_title %}
+    <div class="content2-pagetitle">{{ page.page_title }}</div>
+    {% else %}
+    <div class="content2-pagetitle">{{ page.title }}</div>
+    {% endif %}
+    <div class="content2-container line-box">
+        <div class="content2-container-1col">
+            {% if page.only_on %}
+            <div class="warning">
+                The information present on this page is only valid on the <b>{{ page.only_on }}</b> flavors of Rock
+            </div>
+            {% endif %}
+            {{ content }}
+        </div>
+    </div>
+</div>

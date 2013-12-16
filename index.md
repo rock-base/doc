@@ -1,8 +1,6 @@
 ---
-page_title: false
 title: "Rock: the Robot Construction Kit"
-rock_page_style: centered
-template: index.template
+layout: index
 ---
 
 <h1>What is Rock ?</h1>

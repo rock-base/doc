@@ -18,12 +18,7 @@
   <div class="page-container-2">
       <div class="nav1-container">
           <div class="nav1">
-              <webgen:block name="navbar" notfound="ignore"/>
-              <a href="{% relocatable /documentation/installation.html %}">Installation</a>
-              <a href="{% relocatable /documentation/index.html %}">Documentation</a>
-              <a href="{% relocatable /package_directory.html %}">Browse Packages</a>
-              <a href="http://blog.rock-robotics.org">News</a>
-              <a href="{% relocatable /documentation/about/contributing.html %}">Community</a>
+              <a href="{% relocatable /documentation/installation.html %}">Installation</a><a href="{% relocatable /documentation/index.html %}">Documentation</a><a href="{% relocatable /package_directory.html %}">Browse Packages</a><a href="http://blog.rock-robotics.org">News</a><a href="{% relocatable /documentation/about/contributing.html %}">Community</a><a href="http://trac.rock-robotics.org/newticket">New Ticket</a>
           </div>
           {% include google_search_bar.html %}
       </div>
@@ -42,33 +37,8 @@
       <div class="buffer">
       </div>
 
-      <div class="leftnav">
-          <webgen:block name="leftbar" notfound="ignore"/>
-      </div>
+      {{ content }}
 
-    
-      {% if page.rock_page_style == 'centered' %}
-      <div class="content2" style="margin-left: 110px;">
-      {% else %}
-      <div class="content2">
-      {% endif %}
-
-          {% if page.page_title %}
-              <div class="content2-pagetitle">{{ page.page_title }}</div>
-          {% else %}
-              <div class="content2-pagetitle">{{ page.title }}</div>
-          {% endif %}
-          <div class="content2-container line-box">
-              <div class="content2-container-1col">
-                  {% if page.only_on %}
-                  <div class="warning">
-                      The information present on this page is only valid on the <b>{{ page.only_on }}</b> flavors of Rock
-                  </div>
-                  {% endif %}
-                  {{ content }}
-              </div>
-          </div>
-      </div>
 
       <!-- FOOTER -->
       <div class="footer">

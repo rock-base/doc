@@ -5,4 +5,8 @@ kramdown:
 
 default_layouts:
     documentation/.*: documentation
+    changelog/.*: changelog
+    index.html: index
+    package_directory/.*: package_directory
+    search_results.html: search_results
     ".*": default
