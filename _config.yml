@@ -4,4 +4,5 @@ kramdown:
     use_coderay: true
 
 default_layouts:
-    default: default
+    documentation/.*: documentation
+    ".*": default
