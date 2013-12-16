@@ -12,7 +12,7 @@ Development Workflow
 --------------------
 
 <div class="fullwidth_video_400">
-{youtube: {video_id: "UkZYiw7crbw", width: 400, height: 290, embed: true}}
+{% youtube UkZYiw7crbw 400 290 %}
 </div>
 
 First and foremost, development in Rock always starts with __[creating a
@@ -33,7 +33,7 @@ the process, from a library to running network of components.
 Data Analysis
 -------------
 <div class="fullwidth_video_400">
-{youtube: {video_id: "PhHFzCNvjlQ", width: 400, height: 290, embed: false}}
+{% youtube PhHFzCNvjlQ 400 290 %}
 </div>
 
 At this point, Rock offers extended support for runtime as well as offline data
@@ -53,6 +53,6 @@ components both at design and running time. Have a look first at the
 [corresponding tutorials](system_management_tutorials).
 
 <div class="fullwidth_video_400">
-{youtube: {video_id: QKl_0pGIfqI, width: 400, height: 300}}
+{% youtube QKl_0pGIfqI 400 300 %}
 </div>
 
