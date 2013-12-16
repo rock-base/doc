@@ -1,0 +1,7 @@
+markdown: kramdown
+permalink: /:categories/:title.html
+kramdown:
+    use_coderay: true
+
+default_layouts:
+    default: default

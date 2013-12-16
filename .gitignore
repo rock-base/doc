@@ -9,3 +9,4 @@ src/tasks/*
 src/types/*
 src/osdeps/*
 /nbproject/private/
+_site
