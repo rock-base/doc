@@ -31,7 +31,10 @@
       <div class="title_buffer"></div>
 
       <div class="nav2">			
-          {% include breadcrumbs.html %}
+          <ul>
+              <li><a href="{% relocatable /index.html %}">/</a></li>
+              {% breadcrumbs %}
+          </ul>
       </div>
     
       <div class="buffer">
