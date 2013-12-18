@@ -18,10 +18,10 @@ services) to existing task contexts.
 Modelling
 ---------
 The syskit layer then generates a Ruby class that is a subclass of
-{rdoc_class: Syskit::TaskContext} for each of the oroGen components it finds.
+[TaskContext]({% yard tools/syskit Syskit::TaskContext %}) for each of the oroGen components it finds.
 Throught this class, one has access
 to all the runtime code execution features of Roby itself. See [Roby's own
-documentation](http://rock-robotics.org/api/tools/roby) for more information
+documentation]({% api tools/roby %}) for more information
 
 All task contexts get the following task arguments:
 
@@ -139,7 +139,7 @@ XsensImu::Task.provides Srv::OrientationSrv,
 
 Extending with standard Roby execution features {#extend-with-code}
 -----------------------------------------------
-Composition models are subclasses of {rdoc_class: Syskit::TaskContext} which is itself a
+Composition models are subclasses of [TaskContext]({% yard tools/syskit Syskit::TaskContext %}) which is itself a
 grandchild of Roby::Task. As such, much more can be done using the [runtime code
 execution features of Roby](/api/tools/roby/building/tasks.html).
 

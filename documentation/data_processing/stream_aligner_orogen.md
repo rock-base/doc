@@ -32,7 +32,7 @@ The following statements are available in the task context definition:
 stream_aligner
 : The stream_aligner statement will add a instance of the stream aligner to the
   task base class. If needed, this instance of aggregator::StreamAligner (from
-  [the drivers/aggregator package]({rock_pkg: drivers/aggregator})) can be accessed
+  [the drivers/aggregator package]({% pkg drivers/aggregator %})) can be accessed
   from the C++ code as the _stream_aligner attribute.
 
 max_latency(timeout_in_seconds)

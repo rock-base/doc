@@ -43,7 +43,7 @@ make install
 
 The previous step will install everything but the Spline classes, which are
 needed for instance by the trajectory following / motion planning components. If
-you need the Spline class, install the {rock_pkg: external/sisl} package beforehand.
+you need the Spline class, install the [external/sisl]({% pkg external/sisl %}) package beforehand.
 {: .note}
 
 Once you have installed this package, you will also need to set a few important

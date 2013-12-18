@@ -175,7 +175,7 @@ The actuator device driver need both input and output through the communication
 bus. The driver therefore declares an input port and an output port of the
 /canbus/Message type. These names are arbitrary.
 
-The [canbus component]({rock_task: canbus::Task}) declares a static input port
+The [canbus component]({% task canbus::Task %}) declares a static input port
 of the /canbus/Message type. This is going to be used for all data that should
 be sent to the bus. For the bus-to-driver part, it declares a dynamic output
 port with

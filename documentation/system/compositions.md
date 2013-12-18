@@ -71,7 +71,7 @@ In this example, the composition would require three components:
  * a component providing the Base::OrientationSrv service, which gives the
    orientation in space of the system whose odometry we're computing
  * finally, the task context that is going to do the computation (from the
-   {rock_pkg: slam/orogen/odometry} package).
+   [slam/orogen/odometry]({% pkg slam/orogen/odometry %}) package).
 
 This is all well, but (obviously), these children need to be connected together.
 This is done with:

@@ -1,6 +1,7 @@
 ---
 title: Data connections
 sort_info: 150
+pkg: tools/orocos.rb
 ---
 
 Port access
@@ -12,8 +13,8 @@ Getting a port from a task is as easy as
 port_object = my_task.port_name
 ~~~
 
-The returned port object is either an {rdoc_class: {base_url: /api/tools/orocos.rb, name: "Orocos::InputPort"}} or an
-{rdoc_class: {base_url: /api/tools/orocos.rb, name: "Orocos::OutputPort"}}, based on the port type.
+The returned port object is either an [InputPort]({% yard Orocos::InputPort %}) or an
+[OutputPort]({% yard Orocos::OutputPort %}), based on the port type.
 
 Creating connections
 --------------------
@@ -68,8 +69,8 @@ Reading outputs or writing inputs
 ---------------------------------
 
 One can read outputs and write inputs from the Ruby scripts. To achieve this,
-one gets a {rdoc_class: {base_url: /api/tools/orocos.rb, name: "Orocos::OutputReader"}}
-or a {rdoc_class: {base_url: /api/tools/orocos.rb, name: "Orocos::InputWriter"}} object
+one gets a [OutputReader]({% yard Orocos::OutputReader %})
+or a [InputWriter]({% yard Orocos::InputWriter %}) object
 (respectively) with:
 
 ~~~ ruby

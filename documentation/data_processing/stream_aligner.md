@@ -47,8 +47,7 @@ solution in most cases.
 
 Stream Aligner Principles
 -------------------------
-Rock's stream aligner (in the [drivers/aggregator]({rock_pkg:
-drivers/aggregator}) package) ensures that
+Rock's stream aligner (in the [drivers/aggregator]({% pkg drivers/aggregator %}) package) ensures that
 data is processed in order by (1) queueing timestamped data, and (2) calling
 registered callbacks in the order of the timestamps.
 
@@ -118,8 +117,8 @@ Using the stream aligner
 ------------------------
 As in all of Rock, the stream aligner is implemented as a pure C++ library that
 can be used outside of Rock's component framework. The API of this library will
-not be detailed in this documentation. Go to the [drivers/aggregator]({rock_pkg:
-drivers/aggregator}) package documentation for more details.
+not be detailed in this documentation. Go to the [drivers/aggregator]({% pkg drivers/aggregator %})
+package documentation for more details.
 
 The most interesting usage of the stream aligner is within oroGen components.
 Rock provides an oroGen plugin that extends the oroGen specification and

@@ -27,7 +27,7 @@ This tutorial will guide you through:
 
 The action state machines presented in this tutorial are not specific to syskit,
 but are available to any Roby action. You may want to also read the [Roby
-documentation]({rock_api: tools/roby}) for more information about them. However, Syskit
+documentation]({% api tools/roby %}) for more information about them. However, Syskit
 does extend these state machines to give some syskit-specific functionality.
 
 Defining State Machines

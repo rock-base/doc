@@ -22,7 +22,7 @@ interface elements:
    known and do not change at startup, and
  * a dynamic_transforms port that allows to send changing transformations to the
    transformer. The data must be sent using the
-   [base/samples/RigidBodyState]({rock_type: base/samples/RigidBodyState}) type.
+   [base/samples/RigidBodyState]({% type base/samples/RigidBodyState %}) type.
    Since the source and target frames are stored in the data structure, all
    streams that are 
  * finally, for each declared frame, a _frame_name_frame property that allows to

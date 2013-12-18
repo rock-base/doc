@@ -25,8 +25,7 @@ means of monitoring](/documentation/system).
 Monitoring
 ----------
 The stream aligner allows to export a pretty complete statistics structure of
-type [/aggregator/StreamAlignerStatus]({rock_type:
-/aggregator/StreamAlignerStatus}), that informs the outside world about the
+type [/aggregator/StreamAlignerStatus]({% type /aggregator/StreamAlignerStatus %}), that informs the outside world about the
 general aligner behaviour. The oroGen plugin exports that structures on an
 output port called stream_aligner_status that exports this data structure. By
 default, it is exported every second but this can be configured with the

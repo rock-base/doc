@@ -258,7 +258,7 @@ unknown". For instance
 dynamic_output_port /.*/, "canbus/Message"
 ~~~
 
-declares, in the [canbus::Task]({rock_task: canbus::Task}), that ports with
+declares, in the [canbus::Task]({% task canbus::Task %}), that ports with
 arbitrary names might be added to the task interface, and that these ports will
 have the /canbus/Message type.
 

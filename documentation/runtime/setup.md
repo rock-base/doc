@@ -1,7 +1,8 @@
 ---
 title: Starting the system up
 sort_info: 50
---- name:content pipeline:tags,markdown,blocks
+pkg: tools/orocos.rb
+---
 
 Setting up CORBA
 ----------------
@@ -32,8 +33,8 @@ Orocos.initialize
 ~~~
 
 Finally, the CORBA.call\_timeout and CORBA.connect\_timeout
-specify timeouts at the CORBA level. See the {rdoc_class: {base_url:
-/api/tools/orocos.rb, name: "Orocos::CORBA"}} documentation
+specify timeouts at the CORBA level. See the documentation for the [CORBA
+module]({% yard Orocos::CORBA %}) documentation
 for more information.
 
 Starting processes _(oroGen-based modules only)_
@@ -71,8 +72,7 @@ end
 ~~~
 
 Orocos.run can also redirect the process outputs to files, and run them in
-valgrind. See the {rdoc_class: {base_url: /api/tools/orocos.rb, name: Orocos,
-base_module: '', text: "documentation of the Orocos module"}} for more
+valgrind. See the [documentation of the Orocos module]({% yard Orocos %}) for more
 information.
 
 Nameservices

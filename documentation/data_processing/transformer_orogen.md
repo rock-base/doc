@@ -81,8 +81,8 @@ templates generated in templates/tasks/
 Latency Considerations
 ----------------------
 There is currently no way to tell a transformer which transformations are needed
-with interpolation and without interpolation (this is [ticket #98]({rock_ticket:
-"98"}). In effect, it means that all the dynamic transformation streams are
+with interpolation and without interpolation (this is [ticket #98]({% ticket 98 %}).
+In effect, it means that all the dynamic transformation streams are
 configured with a period of zero. Or, in other words, that the transformer must
 wait to have a sample both __before__ and __after__ the processed samples before
 calling any callbacks.

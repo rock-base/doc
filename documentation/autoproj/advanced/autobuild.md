@@ -1,6 +1,7 @@
 ---
 title: Writing autobuild scripts
 sort_info: 200
+pkg: autobuild
 ---
 
 Defining CMake packages
@@ -29,8 +30,8 @@ end
 
 The above snippet being equivalent to calling <tt>cmake -DVAR=VALUE</tt>
 
-The "pkg" variable in the example above is an instance of {rdoc_class:
-{base_url: /api/autobuild, name: "Autobuild::CMake"}}
+The "pkg" variable in the example above is an instance of
+[CMake]({% yard Autobuild::CMake %})
 {: .block}
 
 Defining autotools packages {#autotools}
@@ -45,7 +46,7 @@ end
 ~~~
 
 The 'pkg' variable in the example above is an instance of
-{rdoc_class: {base_url: /api/autobuild, name: "Autobuild::Autotools"}}
+[Autotools]({% yard Autobuild::Autotools %})
 {: .block}
 
 Since autotools (and specifically, automake) environments are unfortunately
@@ -111,9 +112,9 @@ end
 ~~~
 
 The 'pkg' variable in the example above is an instance of
-{rdoc_class: {base_url: /api/autobuild, name: "Autobuild::ImporterPackage"}}
+[ImporterPackage]({% yard Autobuild::ImporterPackage %})
 with additional methods coming from
-{rdoc_class: {base_url: /api/autoproj, name: "RubyPackage"}}
+[RubyPackage]({% yard autoproj Autoproj::RubyPackage %})
 {: .block}
 
 Defining oroGen packages
@@ -130,7 +131,7 @@ oroGen is a module generator for the Orocos component framework. See [the oroGen
 documentation](../../orogen) for more information.
 
 The 'pkg' variable in the example above is an instance of
-{rdoc_class: {base_url: /api/autobuild, name: "Autobuild::Orogen"}}
+[Orogen]({% yard Autobuild::Orogen %})
 {: .block}
 
 OS-specific bits (<tt>not_on</tt> and <tt>only_on</tt>) {#not_on_and_only_on}

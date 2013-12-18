@@ -4,8 +4,7 @@ sort_info: 600
 ---
 
 When using syskit, the bundles are first Roby applications. As such, the
-description [of the file layout in a Roby application]({rock_api:
-tools/roby}/building/file_layout.html) applies.
+description [of the file layout in a Roby application]({% api tools/roby %}/building/file_layout.html) applies.
 
 This page will start by explaining how one turns a plain Roby application into a
 syskit-enabled bundle. We will then summarize parts that are added in addition
@@ -45,7 +44,7 @@ To add templates for syskit-specific directories and files.
 Syskit-specific File Layout
 ---------------------------
 This section deals with the parts of the file layout that are specific to
-syskit. Refer to [this page]({rock_api: tools/roby}/building/file_layout.html) for the
+syskit. Refer to [this page]({% api tools/roby %}/building/file_layout.html) for the
 generic Roby parts
 
 config/orogen/

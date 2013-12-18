@@ -103,8 +103,8 @@ of Rock conform to this style. See [these guidelines](http://rock.opendfki.de/wi
 for more information
 {: .warning}
 
-In Rock, common C++ types are defined [in the base/types package]({rock_pkg:
-base/types}). If some type you need is defined here, it is __highly recommended__
+In Rock, common C++ types are defined [in the base/types package]({% pkg base/types %}).
+If some type you need is defined here, it is __highly recommended__
 to use the common type. In our case, we want to timestamp the message that our
 library will manipulate.  If we have a look at the base/types API documentation
 (follow the API documentation link from the package page above), we can see that

@@ -66,7 +66,7 @@ Rock::CorridorNavigation::Servoing.
 
 The other thing that can be specified in an instance requirement are the task
 arguments (as in [Roby task
-arguments]({rock_api: tools/roby}/building/task_models.html)).
+arguments]({% api tools/roby %}/building/task_models.html)).
 This is simply done with #with_arguments:
 
 ~~~ ruby
@@ -125,6 +125,6 @@ subsystems_, syskit introduces the concept of __profiles__. This is the subject
 of [the next page](profiles.html)
 
 In general, have a look at the documentation for
-[Syskit::InstanceRequirements]({rock_api: tools/syskit}/{rdoc_path:
-Syskit::InstanceRequirements}) to get all the available specifications that can
+[InstanceRequirements]({% yard tools/syskit Syskit::InstanceRequirements %})
+to get all the available specifications that can
 be added to an instance requirement object.

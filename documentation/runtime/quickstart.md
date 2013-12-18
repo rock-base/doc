@@ -1,7 +1,8 @@
 ---
 title: Quickstart
 sort_info: 20
---- name:content pipeline:tags,markdown,blocks
+pkg: tools/orocos.rb
+---
 
 The following example uses orocos.rb's functionality to manage processes. While
 it works only for [deployments generated using
@@ -85,8 +86,8 @@ Orocos.run 'lowlevel', 'imu', 'gps', 'hokuyo', 'state_estimator' do
 end
 ~~~
 
-The value returned by Orocos.name_service.get is an instance of {rdoc_class: {base_url:
-/api/tools/orocos.rb, name: "Orocos::TaskContext"}}
+The value returned by Orocos.name_service.get is an instance of
+[TaskContext]({% yard Orocos::TaskContext %})
 
 The task name is the first argument of the 'task' statements in the deployment
 definitions:
@@ -150,8 +151,9 @@ Orocos.run 'lowlevel', 'imu', 'gps', 'hokuyo', 'state_estimator' do
 end
 ~~~
 
-Then, the actual state of the module can be checked with {rdoc\_class:
-TaskContext#running?}, #error? and #fatal?. It can be manipulated with #configure, #start, #stop, #reset\_error, and #cleanup
+Then, the actual state of the module can be checked with
+[TaskContext#running?]({% yard Orocos::TaskContext#running? %}),
+#error? and #fatal?. It can be manipulated with #configure, #start, #stop, #reset\_error, and #cleanup
 
 Connecting modules together
 ---------------------------
@@ -160,8 +162,8 @@ In our example, the <tt>state_estimator</tt> module is a Kalman filter that
 processes the IMU and GPS streams. We therefore need to connect the outputs of
 the imu and gps tasks to the corresponding inputs of the state estimator module.
 
-To do that, we use the {rdoc_class: {base_url: /api/tools/orocos.rb, name:
-"Orocos::OutputPort#connect_to"}} method:
+To do that, we use the [OutputPort#connect_to]({% yard Orocos::OutputPort#connect_to %})
+method:
 
 ~~~ ruby
   imu = Orocos.name_service.get 'imu'
@@ -194,11 +196,8 @@ while true
 end
 ~~~
 
-In the above code snippet, <tt>imu.imu_readings</tt> is a {rdoc_class:
-{base_url: /api/tools/orocos.rb, name: "Orocos::OutputPort"}} instance and
-<tt>imu_reader</tt> is a {rdoc_class: {base_url: /api/tools/orocos.rb, name:
-"Orocos::OutputReader"}}
-instance.
+In the above code snippet, <tt>imu.imu_readings</tt> is a [OutputPort]({% yard Orocos::OutputPort %}) instance and
+<tt>imu_reader</tt> is a [OutputReader]({% yard Orocos::OutputReader %}) instance.
 
 A complete description of the manipulation of ports can be found
 [here](ports.html)
