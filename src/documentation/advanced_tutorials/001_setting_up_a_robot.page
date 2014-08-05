@@ -1,3 +1,8 @@
+---
+title: Setting up a robot
+sort_info: 001
+---
+
 While the previous tutorials refer to the example "rock controlled by a 
 joystick", we will now have a look at how to set up an actual robot.
 
