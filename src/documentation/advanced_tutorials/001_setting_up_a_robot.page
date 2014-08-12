@@ -9,16 +9,16 @@ joystick", we will now have a look at how to set up an actual robot.
 The following topics will be addressed by this tutorial, in the order in which
 the steps are normally carried out when a new robot is set up:
 
-* Create and configure a new build system and add it to git version control
-* Create and configure the corresponding bundle
+* Set up a new build system and add it to git version control
+* Create the corresponding bundle as well as configuration files for tasks
 * Configure the transformer
 * Create scripts for the robot
 * Integration into MARS
 
-Create the build system
+Set up the build system
 -----------------------
 
-To create a new build system, it is best to start with an existing one and to
+To set up a new build system, it is best to start with an existing one and to
 adapt it according to your needs. Bootstrapping is explained 
 [here](http://rock-robotics.org/master/documentation/autoproj/bootstrap.html). 
 As an example, _rock/buildconf_ is a basic Rock configuration.
@@ -60,12 +60,32 @@ git push git@your_git_hosting_method:your_project_name/package_set.git HEAD:mast
 
 Choose the packages you need for your bundle from [the package directory]
 (http://rock-robotics.org/master/package_directory.html) and update the 
-_autoproj/manifest_ file accordingly.
+_autoproj/manifest_ file accordingly. For more information about how to install
+packages, have a look [here](../tutorials/190_installing_packages.html).
+
+In short, the desired packages need to be added to the _layout_ section of your
+_autoproj/manifest_ file, for example - for a Hokuyo laser scanner:
+
+~~~
+layout:
+  - drivers/hokuyo
+~~~
+
+Make sure that the corresponding package set is also declared in your 
+_autoproj/manifest_ file. For the a.-m. example, it is:
+
+~~~
+package_sets:
+  - gitorious: rock/package_set
+~~~
+
+Call _amake_ to install the declared packages.
 
 Bundles in Rock
 ---------------
 
-Bundles in Rock are needed to run (sub)systems. 
+Bundles in Rock are collections of all files needed to run a particular robot 
+system. 
 
 In practice, bundles are Rock packages and they - most importantly - contain
 the following:
@@ -88,8 +108,15 @@ rock-create-bundle desired/path/to/my/bundle
 The name of your bundle should, for logical reasons, equal the name of your 
 robot. It should be located in a _bundles_ folder in your Rock installation.
 
-Configure the bundle
---------------------
+Afterwards, you must tell Rock that this is the bundle you are currently
+working on:
+
+~~~
+rock-bundle-default your_bundle
+~~~
+
+Configuration files for tasks
+-----------------------------
 
 _rock-inspect_ can help you to find existing tasks you might want to include
 in your bundle. For example, try _rock_inspect -t camera_ to get a list of
@@ -140,6 +167,18 @@ dynamic_transform "producer_task_name.port_name",
 Where _producer_task_name_ and _port_name_ refer to the data stream that defines
 the required transformation. If the task has only one RigidBodyState output
 port, the port name can be left empty. 
+
+An example for a configuration file might look as follows:
+
+~~~ ruby
+# The frame names in this file are arbitrary !
+static_transform Eigen::Vector3d.new(0.3, 0, 0),
+  "Body" => "ServoFrom"
+static_transform Eigen::Quaternion.from_angle_axis(1, Eigen::Vector3d::UnitX),
+  "ServoTo" => "Lidar",
+dynamic_transform "servo.transform_samples",
+  "ServoFrom" => "ServoTo",
+~~~
 
 As you can see, the _transforms.rb_ file contains the global information about 
 which transformation is specified in which task. Look 
