@@ -41,7 +41,8 @@ An example for a configuration file might look as follows:
 # The frame names in this file are arbitrary !
 static_transform Eigen::Vector3d.new(0.3, 0, 0),
   "Body" => "ServoFrom"
-static_transform Eigen::Quaternion.from_angle_axis(1, Eigen::Vector3d::UnitX),
+static_transform Eigen::Quaternion.from_angle_axis
+  (1, Eigen::Vector3d::UnitX),
   "ServoTo" => "Lidar",
 dynamic_transform "servo.transform_samples",
   "ServoFrom" => "ServoTo",

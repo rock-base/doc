@@ -12,7 +12,7 @@ _buildconf.git_ on git.
 In the main folder of your new build system (_acd your_project_name_), do:
 
 ~~~
-autoproj switch-config git@your_git_hosting_method:your_project_name/buildconf.git
+autoproj switch-config git@your_git_hoster:your_project/buildconf.git
 ~~~
 
 To add the package set to git version control, first create an empty 
@@ -32,7 +32,7 @@ touch orogen.autobuild
 touch deps.osdeps
 git add .
 git commit -m "Initial commit"
-git push git@your_git_hosting_method:your_project_name/package_set.git HEAD:master
+git push git@your_git_hoster:your_project/package_set.git HEAD:master
 ~~~
 
 Choose the packages you need for your bundle from [the package directory]
