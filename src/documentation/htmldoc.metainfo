@@ -30,6 +30,10 @@ system_management_tutorials:
     sort_info: 85
     title: System Management
 
+setting_up_a_robot:
+    sort_info: 87
+    title: Setting up a robot
+
 additional_tutorials:
     sort_info: 90
     title: Additional Functionality

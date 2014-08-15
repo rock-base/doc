@@ -1,0 +1,59 @@
+---
+title: Adding the build system to git version control
+sort_info: 200
+---
+
+Pick a git hosting method and create a new project, containing two repositories.
+One of them should be named _buildconf.git_ - it is for your the main autoproj 
+configuration. The other one should be named _package_set.git_ - it is for your
+package set. Push your build system's current _autoproj_ folder to 
+_buildconf.git_ on git.
+
+In the main folder of your new build system (_acd your_project_name_), do:
+
+~~~
+autoproj switch-config git@your_git_hoster:your_project/buildconf.git
+~~~
+
+To add the package set to git version control, first create an empty 
+_package_set_ folder. Create a _source.yml_ file and edit the first line as 
+follows:
+
+~~~
+name: your project name
+~~~
+
+Then do:
+
+~~~
+git init
+touch libs.autobuild
+touch orogen.autobuild
+touch deps.osdeps
+git add .
+git commit -m "Initial commit"
+git push git@your_git_hoster:your_project/package_set.git HEAD:master
+~~~
+
+Choose the packages you need for your bundle from [the package directory]
+(http://rock-robotics.org/master/package_directory.html) and update the 
+_autoproj/manifest_ file accordingly. For more information about how to install
+packages, have a look [here](../tutorials/190_installing_packages.html).
+
+In short, the desired packages need to be added to the _layout_ section of your
+_autoproj/manifest_ file, for example - for a Hokuyo laser scanner:
+
+~~~
+layout:
+  - drivers/hokuyo
+~~~
+
+Make sure that the corresponding package set is also declared in your 
+_autoproj/manifest_ file. For the a.-m. example, it is:
+
+~~~
+package_sets:
+  - gitorious: rock/package_set
+~~~
+
+Call _amake_ to install the declared packages.

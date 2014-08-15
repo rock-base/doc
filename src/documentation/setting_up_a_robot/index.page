@@ -1,0 +1,16 @@
+---
+title: Introduction
+sort_info: 0
+---
+
+While the previous tutorials refer to the example "rock controlled by a 
+joystick", we will now have a look at how to set up an actual robot.
+
+The following topics will be addressed by this tutorial, in the order in which
+the steps are normally carried out when a new robot is set up:
+
+* Set up a new build system and add it to git version control
+* Create the corresponding bundle as well as configuration files for tasks
+* Configure the transformer
+* Create scripts for the robot
+* Integration into MARS

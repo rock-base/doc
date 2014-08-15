@@ -1,0 +1,35 @@
+---
+title: Bundles in Rock
+sort_info: 300
+---
+
+Bundles in Rock are collections of all files needed to run a particular robot 
+system. 
+
+In practice, bundles are Rock packages and they - most importantly - contain
+the following:
+
+ * ruby scripts (to run sets of components) - contained in the _scripts/_ folder
+ * configuration files for oroGen tasks - contained in the _config/orogen/_ folder
+ * log files - contained in the _logs/_ folder
+ * ...
+
+See [the wiki](http://rock.opendfki.de/wiki/WikiStart/Standards/RG7) for more
+information on bundles.
+
+Creating the bundle
+----------------- 
+
+~~~
+rock-create-bundle desired/path/to/my/bundle
+~~~
+
+The name of your bundle should, for logical reasons, equal the name of your 
+robot. It should be located in a _bundles_ folder in your Rock installation.
+
+Afterwards, you must tell Rock that this is the bundle you are currently
+working on:
+
+~~~
+rock-bundle-default your_bundle
+~~~
