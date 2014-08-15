@@ -1,0 +1,54 @@
+---
+title: Configuring the transformer
+sort_info: 500
+---
+
+When data is processed by your robotic system, there will usually be quite a
+number of transformations between different frames, e.g. between a laser scanner
+and the body-center of the robot. Rock's transformer handles the processing of
+geometrical information, so that in each component, only the needed 
+transformations have to be specified, while transformations specified in other
+components are made available during runtime.
+
+Inside the bundle, the transformer file is located in _config/transforms.rb_.
+
+Static transformations are declared as follows:
+
+~~~ ruby
+static_transform translation, rotation,
+  "source_frame_name" => "target_frame_name"
+~~~
+
+Translation and rotations are resp. specified with Eigen::Vector3d and
+Eigen::Quaternion. The very useful Eigen::Quaternion.from_axis(angle, axis) call
+is often used in these files. The translation or rotation can be omitted if they
+are identities.
+
+Dynamic transformations are declared as follows:
+
+~~~ ruby
+dynamic_transform "producer_task_name.port_name",
+  "source_frame_name" => "target_frame_name",
+~~~
+
+Where _producer_task_name_ and _port_name_ refer to the data stream that defines
+the required transformation. If the task has only one RigidBodyState output
+port, the port name can be left empty. 
+
+An example for a configuration file might look as follows:
+
+~~~ ruby
+# The frame names in this file are arbitrary !
+static_transform Eigen::Vector3d.new(0.3, 0, 0),
+  "Body" => "ServoFrom"
+static_transform Eigen::Quaternion.from_angle_axis(1, Eigen::Vector3d::UnitX),
+  "ServoTo" => "Lidar",
+dynamic_transform "servo.transform_samples",
+  "ServoFrom" => "ServoTo",
+~~~
+
+As you can see, the _transforms.rb_ file contains the global information about 
+which transformation is specified in which task. Look 
+[here](http://rock-robotics.org/master/documentation/data_processing/transformer_orogen.html)
+for more information about how transformations are specified in oroGen 
+components.
