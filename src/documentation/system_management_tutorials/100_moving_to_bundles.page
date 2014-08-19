@@ -15,11 +15,12 @@ In Rock, bundles offer a "functional" view to the available functionality, i.e.
 instead of viewing only single components, bundles gather scripts,
 configuration files and tools which are needed to run (sub)systems.
 
-In practice, bundles are Rock packages that can contain the following:
+In practice, bundles are Rock packages and they - most importantly - contain
+the following:
 
- * ruby scripts (to run sets of components)
+ * ruby scripts (to run sets of components) - contained in the _scripts/_ folder
+ * configuration files for oroGen tasks - contained in the _config/orogen/_ folder
  * models (including, but not limited to, for the system management layer)
- * configuration files
  * data converter and data analysis scripts
  * datasets needed to run the system (as e.g. location information, maps, ...)
  * ...
@@ -59,6 +60,6 @@ time at which the process that generated the logs _started_ (for example:
 
 Move on to the next tutorial
 ------------
-We're setup, let's now dive into [building a model-based
+We're prepared, let's now dive into [building a model-based
 application](200_first_composition.html)
 
