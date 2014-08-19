@@ -15,7 +15,7 @@ and the most important tools that exist to run and debug it.
 Note that this tutorial does require a (physical) joystick. The virtual joystick
 won't work. However, if you don't have one, you can do everything in this
 tutorial except running the generated component network. Moreover, the follow-up
-tutorials will not need the joystick anymore, so if you don't have one we
+tutorials will not need the joystick anymore, so if you don't have one, we
 suggest that you go through this tutorial anyway (just reading the running part)
 and go on with the follow-up tutorials.
 {: .warning}
@@ -23,7 +23,7 @@ and go on with the follow-up tutorials.
 A first model-based script
 ------------
 The root concept in syskit is the _composition_. A
-composition is a group of component that, once bound together, do something
+composition is a group of components that, once bound together, do something
 useful. In our case, it would be moving the rock with a joystick. Create a new
 file scripts/01_joystick.rb and add the following code:
 
@@ -68,7 +68,7 @@ add_mission Tutorials::RockControl
 Checking the script and running the network
 -------------------
 As this _defines_ a composition, it is possible to visualize it without
-running anything. Without additional adaptation though you will hit an error when doing:
+running anything. Without additional adaptation, though, you will hit an error when doing:
 
 ~~~
 syskit instanciate scripts/01_joystick.rb
@@ -92,7 +92,7 @@ Make sure they are installed with
 amake tutorial/orogen/tut_deployment
 ~~~
 
-You can then verify that they is indeed a deployment called 'rock_tutorial' that
+You can then verify that there is indeed a deployment called 'rock_tutorial' that
 is available:
 
 ~~~
@@ -115,7 +115,7 @@ defined in tut_deployment
 ~~~
 
 The new deployment can then be used in the script by adding, just after the
-other use_deployment line.
+other use_deployment line:
 
 ~~~ ruby
 Syskit.conf.use_deployment 'rock_tutorial'
@@ -221,6 +221,6 @@ This tutorial showed you:
   * how to graphically represent the result
 
 The following tutorial will go a bit further, introducing the concept of _data
-service_, which allows you to add a bit more of abstraction in your system.
+service_, which allows you to add a bit more of abstraction to your system.
 
 Progress to the [next tutorial](300_services.html) defining data services.
