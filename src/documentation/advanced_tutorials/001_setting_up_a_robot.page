@@ -1,0 +1,187 @@
+---
+title: Setting up a robot
+sort_info: 001
+---
+
+While the previous tutorials refer to the example "rock controlled by a 
+joystick", we will now have a look at how to set up an actual robot.
+
+The following topics will be addressed by this tutorial, in the order in which
+the steps are normally carried out when a new robot is set up:
+
+* Set up a new build system and add it to git version control
+* Create the corresponding bundle as well as configuration files for tasks
+* Configure the transformer
+* Create scripts for the robot
+* Integration into MARS
+
+Set up the build system
+-----------------------
+
+To set up a new build system, it is best to start with an existing one and to
+adapt it according to your needs. Bootstrapping is explained 
+[here](http://rock-robotics.org/master/documentation/autoproj/bootstrap.html). 
+As an example, _rock/buildconf_ is a basic Rock configuration.
+
+Add the build system to git version control
+-------------------------------------
+
+Pick a git hosting method and create a new project, containing two repositories.
+One of them should be named _buildconf.git_ - it is for your the main autoproj 
+configuration. The other one should be named _package_set.git_ - it is for your
+package set. Push your build system's current _autoproj_ folder to 
+_buildconf.git_ on git.
+
+In the main folder of your new build system (_acd your_project_name_), do:
+
+~~~
+autoproj switch-config git@your_git_hosting_method:your_project_name/buildconf.git
+~~~
+
+To add the package set to git version control, first create an empty 
+_package_set_ folder. Create a _source.yml_ file and edit the first line as 
+follows:
+
+~~~
+name: your project name
+~~~
+
+Then do:
+
+~~~
+git init
+touch libs.autobuild
+touch orogen.autobuild
+touch deps.osdeps
+git add .
+git commit -m "Initial commit"
+git push git@your_git_hosting_method:your_project_name/package_set.git HEAD:master
+~~~
+
+Choose the packages you need for your bundle from [the package directory]
+(http://rock-robotics.org/master/package_directory.html) and update the 
+_autoproj/manifest_ file accordingly. For more information about how to install
+packages, have a look [here](../tutorials/190_installing_packages.html).
+
+In short, the desired packages need to be added to the _layout_ section of your
+_autoproj/manifest_ file, for example - for a Hokuyo laser scanner:
+
+~~~
+layout:
+  - drivers/hokuyo
+~~~
+
+Make sure that the corresponding package set is also declared in your 
+_autoproj/manifest_ file. For the a.-m. example, it is:
+
+~~~
+package_sets:
+  - gitorious: rock/package_set
+~~~
+
+Call _amake_ to install the declared packages.
+
+Bundles in Rock
+---------------
+
+Bundles in Rock are collections of all files needed to run a particular robot 
+system. 
+
+In practice, bundles are Rock packages and they - most importantly - contain
+the following:
+
+ * ruby scripts (to run sets of components) - contained in the _scripts/_ folder
+ * configuration files for oroGen tasks - contained in the _config/orogen/_ folder
+ * log files - contained in the _logs/_ folder
+ * ...
+
+See [the wiki](http://rock.opendfki.de/wiki/WikiStart/Standards/RG7) for more
+information on bundles.
+
+Create the bundle
+----------------- 
+
+~~~
+rock-create-bundle desired/path/to/my/bundle
+~~~
+
+The name of your bundle should, for logical reasons, equal the name of your 
+robot. It should be located in a _bundles_ folder in your Rock installation.
+
+Afterwards, you must tell Rock that this is the bundle you are currently
+working on:
+
+~~~
+rock-bundle-default your_bundle
+~~~
+
+Configuration files for tasks
+-----------------------------
+
+_rock-inspect_ can help you to find existing tasks you might want to include
+in your bundle. For example, try _rock_inspect -t camera_ to get a list of
+all available tasks associated with "camera".
+
+The tasks you include into your bundle are configured using a YAML file. 
+To create a new configuration file, do:
+
+~~~
+oroconf extract taskname::Task --save=config/orogen/
+~~~
+
+The new template file is generated in the config/orogen subfolder of the bundle, 
+with a file name that matches the oroGen model name (here, 
+_config/orogen/taskname::Task.yml_)
+
+Configure the transformer
+-------------------------
+
+When data is processed by your robotic system, there will usually be quite a
+number of transformations between different frames, e.g. between a laser scanner
+and the body-center of the robot. Rock's transformer handles the processing of
+geometrical information, so that in each component, only the needed 
+transformations have to be specified, while transformations specified in other
+components are made available during runtime.
+
+Inside the bundle, the transformer file is located in _config/transforms.rb_.
+
+Static transformations are declared as follows:
+
+~~~ ruby
+static_transform translation, rotation,
+  "source_frame_name" => "target_frame_name"
+~~~
+
+Translation and rotations are resp. specified with Eigen::Vector3d and
+Eigen::Quaternion. The very useful Eigen::Quaternion.from_axis(angle, axis) call
+is often used in these files. The translation or rotation can be omitted if they
+are identities.
+
+Dynamic transformations are declared as follows:
+
+~~~ ruby
+dynamic_transform "producer_task_name.port_name",
+  "source_frame_name" => "target_frame_name",
+~~~
+
+Where _producer_task_name_ and _port_name_ refer to the data stream that defines
+the required transformation. If the task has only one RigidBodyState output
+port, the port name can be left empty. 
+
+An example for a configuration file might look as follows:
+
+~~~ ruby
+# The frame names in this file are arbitrary !
+static_transform Eigen::Vector3d.new(0.3, 0, 0),
+  "Body" => "ServoFrom"
+static_transform Eigen::Quaternion.from_angle_axis(1, Eigen::Vector3d::UnitX),
+  "ServoTo" => "Lidar",
+dynamic_transform "servo.transform_samples",
+  "ServoFrom" => "ServoTo",
+~~~
+
+As you can see, the _transforms.rb_ file contains the global information about 
+which transformation is specified in which task. Look 
+[here](http://rock-robotics.org/master/documentation/data_processing/transformer_orogen.html)
+for more information about how transformations are specified in oroGen 
+components.
