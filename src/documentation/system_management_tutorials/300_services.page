@@ -4,7 +4,7 @@ sort_info: 300
 ---
 
 The result of this tutorial can be found in bundles/tutorials_scripts if you
-followed the instructions at the bottom of [this page](../tutorials/index.html)
+follow the instructions at the bottom of [this page](../tutorials/index.html)
 {: .note}
 
 Abstract
@@ -16,26 +16,26 @@ component instances but just component models (classes of components).
 
 In a more concrete manner, this tutorial will show you:
 
- * how to change the RockControl composition so that it can use any component
-   able to output a /base/MotionCommand2D type, instead of just a joystick
- * how to select which command source should be used
+ * How to change the RockControl composition so that it can use any component
+   able to output a /base/MotionCommand2D type, instead of just a joystick and
+ * how to select which command source should be used.
 
 The next tutorial will then deal with the _runtime workflow_ when using
-syskit, e.g., how to switch between different modalities / sources and how to
+syskit, e.g. how to switch between different modalities / sources and how to
 restart components that crashed.
 
 Data Services
 -------------
 A data service describes two things:
 
- * the (minimal) expected interface, i.e. what input and output ports a component needs to have in order to support the service
- * the expected functionality, what the component does with this data. This particular information is contained in the data service name
+ * The (minimum) expected interface, i.e. what input and output ports a component needs to have in order to support the service and
+ * the expected functionality - what the component does with this data. This particular information is contained in the data service name.
 
 For instance, a very common data service is the Base::PoseSrv service:
 
- * as its name implies, it generates poses
- * as its definition requires (not show here), it has a
-   [base::samples::RigidBodyState](../base_types.html) output port
+ * As its name implies, it generates poses.
+ * As its definition requires (not shown here), it has a
+   [base::samples::RigidBodyState](../base_types.html) output port.
 
 Other services (i.e. the Base::OrientationSrv service) would have the same output port,
 but their names would reflect the fact that they do something different.
@@ -100,7 +100,7 @@ boxes) are still present in the graphical representation of the network:
 Snapshot of __syskit instanciate__ (Click to zoom in)
 {: .caption}
 
-Remember: data services are _abstractions_ of components. They can therefore not
+Remember: Data services are _abstractions_ of components. They can therefore not
 be executed (they are not actual components), and actual components must be
 selected in their place.
 
@@ -117,15 +117,13 @@ provides the service 'Tutorials::CommandGeneratorSrv'. The service thus declared
 must be given a name through the :as option. Syskit will verify that there are
 ports on the task that match the ports of the data service.
 
-Note that the port type are important for matching connections and port names do
+Note that the port types are important for matching connections and port names do
 not necessarily need to match between the service and the task. Syskit will map
 the names automatically _if the mapping by type is unambiguous_. If multiple
 ports could be used, it will check if there is one with the same name. If it is
 not the case, an error is generated and you will have to specify the mapping
-manually.
+manually and try again.
 {: .note}
-
-and try again
 
 syskit instanciate scripts/02_services.rb
 {: .cmdline}
@@ -133,7 +131,7 @@ syskit instanciate scripts/02_services.rb
 [![Instanciation error](300_instanciate_output_thumb.png)](300_instanciate_output.png)
 
 Syskit knows only one component that provides the CommandGeneratorSrv service,
-so it picked it up automatically and generated the expected network
+so it picked it up automatically and generated the expected network.
 
 Adding a random-motion generator
 --------------------------------
@@ -159,7 +157,7 @@ using_task_library 'rock_tutorial'
 using_task_library 'tut_brownian'
 ~~~
 
-And change the use_deployment lines to match:
+and change the use_deployment lines to match:
 
 ~~~ ruby
 Syskit.conf.use_deployment 'rock_tutorial'
@@ -192,7 +190,7 @@ This time, there is another error:
 ~~~
 
 There are now two concrete tasks providing the
-CommandGeneratorSrv service: the joystick and the random motion generator. Because
+CommandGeneratorSrv service: The joystick and the random motion generator. Because
 the selection is ambiguous, Syskit refuses to proceed and
 bails out.
 

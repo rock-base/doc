@@ -5,28 +5,28 @@ sort_info: 210
 
 Abstract
 -----------
-In this tutorial you will learn how to display live and logged data with the help of Vizkit and how to 
+In this tutorial, you will learn how to display live and logged data with the help of Vizkit and how to 
 write a custom GUI to display the data of your orocos task.
 
-To understand this tutorial you must have competed the basic tutorials and the data
+To understand this tutorial, you must have completed the basic tutorials and the data
 logging tutorial. Basic knowledge about Qt, Qt Designer and qtruby is also
 necessary.
 
-This tutorial directly continues from the last tutorials, additionally, you have
+This tutorial directly builds on the previous tutorials. Additionally, you have
 to have the rock packages gui/vizkit and gui/rock_widget_collection installed.
 
-In case you are starting here, the required packages are mentioned on the [introduction page](/documentation/advanced_tutorials/index.html)
+In case you are starting here, the required packages are mentioned on the [introduction page](/documentation/advanced_tutorials/index.html).
 
 Displaying Data with Vizkit
 -----------
-Vizkit is a ruby framework build around qtruby to support the developer with functionality to display his
+Vizkit is a ruby framework built around qtruby to support the developer with functionality to display his
 custom data in a convenient way. It is shipped with some Qt Widgets to display some basic types. 
 But its real strength lies in the ability to be customized.
 
-**Displaying Camera Samples** For some base types like the camera frame Vizkit has a special display widget.
-To create an instance of a widget specialised to display camera frames you can use the Vizkit ruby 
-method *display* and an Orocos port which is producing camera frames as argument. In the case below the camera is 
-substituted by a log file called "bottom_camera.0.log" but you can use the same syntax for Orocos tasks as well.
+**Displaying Camera Samples** For some base types like the camera frame, Vizkit has a special display widget.
+To create an instance of a widget specialised to display camera frames, you can use the Vizkit ruby 
+method *display* and an Orocos port which is producing camera frames as an argument. In the case below, the camera is 
+substituted by a log file called "bottom_camera.0.log", but you can use the same syntax for Orocos tasks as well.
 
 ~~~ ruby
 require 'orocos'
@@ -42,22 +42,22 @@ Vizkit.control log
 Vizkit.exec
 ~~~
 
-For testing purposes a small camera log file can be found [here](https://gitorious.org/rock-tutorials/advanced_data_visualization/blobs/raw/5ab9c7688e4b16980c05e5a3c1f0c7a24f3b21df/logfiles/bottom_camera.0.log). It shows an underwater test pipeline used during a student competition in Italy [Sauc-E](http://www.sauc-europe.org/).
+For testing purposes, a small camera log file can be found [here](https://gitorious.org/rock-tutorials/advanced_data_visualization/blobs/raw/5ab9c7688e4b16980c05e5a3c1f0c7a24f3b21df/logfiles/bottom_camera.0.log). It shows an underwater test pipeline used during a student competition in Italy, [Sauc-E](http://www.sauc-europe.org/).
 
 ![ImageView Widget](210_image_viewer.png)
 {: .align-center}
 
 Designing a custom GUI 
 -----------
-Vizkit is able to load ui files created with the Qt Designer. In this case a small GUI is loaded whose ui file
+Vizkit is able to load ui files created with the Qt Designer. In this case, a small GUI is loaded whose ui file
 can be found [here (right click - save as)](https://gitorious.org/rock-tutorials/advanced_data_visualization/raw/5ab9c7688e4b16980c05e5a3c1f0c7a24f3b21df:resources/test_gui.ui). If you want to create your own ui file, use the *Qt
 Designer*, e.g. by calling *designer* on the command line.
 
 This ui basically creates a window with two dedicated labels for writing strings 
 (named *Time* and *Message*) and a push button (named *Button*) to trigger
-actions. Further on this file is referred to as *test_gui.ui*.
+actions. Further on, this file is referred to as *test_gui.ui*.
 
-To load the ui file with Vizkit use the Vizkit ruby method *load*. After the ui file is loaded
+To load the ui file with Vizkit, use the Vizkit ruby method *load*. After the ui file is loaded,
 you can access all embedded objects by their object name and their qt signal/slots. 
 
 ~~~ ruby
@@ -87,7 +87,7 @@ As you can see, this small script displays the current time and a
 message. Each time the button is pressed, the message is displayed on the command
 line and the time label is updated.
 
-Connecting a custom GUI with an orocos task
+Connecting a custom GUI to an orocos task
 -----------
 
 Just running the ui is nice for testing purposes, but the more interesting part
@@ -104,8 +104,8 @@ Orocos.initialize
 
 gui = Vizkit.load 'test_gui.ui'
 
-Orocos.run 'message_producer::Task' => 'tutorial_message_producer' do 
-    producer = Orocos.name_service.get 'tutorial_message_producer
+Orocos.run 'messages::Producer' => 'tutorial_message_producer' do 
+    producer = Orocos.name_service.get 'tutorial_message_producer'
     producer.configure
 
     #change a property when the button is pressed
@@ -146,14 +146,14 @@ We do several things here which require some explanation:
    the configuration. Then we change the config, configure the task again and
    start it. This scheme is necessary since it is currently the only safe way
    to change the configuration of a task. You will notice a slight pause in the
-   time display when pressing the button, which results from this sequence.
+   time display when pressing the button, which is caused by this sequence.
  
  * We connect our two labels with the output port of the message producer. 
 
-Connecting a custom GUI with log files
+Connecting a custom GUI to log files
 -----------
-If you want to connect your GUI with a log file you can use the same method
-like for an orocos task. The following scripts connects test_gui.ui to a
+If you want to connect your GUI to a log file, you can use the same method
+as for an orocos task. The following script connects test_gui.ui to a
 component, which uses the log from the [previous
 tutorial](200_replay_1.html). Since we only display data, the button is
 not connected.
@@ -178,7 +178,7 @@ Vizkit.exec
 
 Summary
 -----------
-In this tutorial you learned how to write a simple GUI and how to
-connect its object with log files and orocos tasks. 
+In this tutorial, you learned how to write a simple GUI and how to
+connect its object to log files and orocos tasks. 
 
 Progress to the [next tutorial](220_3d_data_visualization.html).
