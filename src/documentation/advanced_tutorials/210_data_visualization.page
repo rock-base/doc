@@ -104,8 +104,10 @@ Orocos.initialize
 
 gui = Vizkit.load 'test_gui.ui'
 
-Orocos.run 'messages::Producer' => 'tutorial_message_producer' do 
-    producer = Orocos.name_service.get 'tutorial_message_producer'
+Orocos.run 'faster_message_producer' do 
+    producer = Orocos::Async.name_service.get 'producer'
+    prod_msg = producer.port "messages"
+
     producer.configure
 
     #change a property when the button is pressed
@@ -128,7 +130,7 @@ Orocos.run 'messages::Producer' => 'tutorial_message_producer' do
     producer.start
 
     # connect the port of message producer to our ui
-    producer.messages.connect_to do |data,_|
+    prod_msg.on_data do |data|
         gui.Time.setText data.time.to_s
         gui.Message.setText data.content
     end
@@ -161,11 +163,11 @@ not connected.
 ~~~ ruby
 require 'vizkit'
 
-log = Orocos::Log::Replay.open('message_producer_deployment.0.log')
+log = Orocos::Log::Replay.open('producer.0.log')
 gui = Vizkit.load 'test_gui.ui'
 
 # connect the port of message producer to our ui
-log.message_producer.messages.connect_to do |data,_|
+log.producer.messages.on_data do |data|
     gui.Time.setText data.time.to_s
     gui.Message.setText data.content
     data # never forget this!!!

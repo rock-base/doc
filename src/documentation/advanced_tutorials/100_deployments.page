@@ -88,28 +88,29 @@ include Orocos
 Orocos.initialize
 
 Orocos.run 'faster_message_producer',
-    'message_consumer::Task' => 'message_consumer' do  
+    'messages::Consumer' => 'consumer' do  
   
   # When using explicit deployments, the name that should be used in
-  # Orocos.name_service.get must be the same name than given as first
-  # argument of the "task" statement in the deployment definition
-  message_producer = Orocos.name_service.get 'producer'
-  message_consumer = Orocos.name_service.get 'message_consumer'
+  # Orocos.name_service.get must be the same name than given as first argument of the
+  # "task" statement in the deployment definition
+  producer = Orocos.name_service.get 'producer'
+  consumer = Orocos.name_service.get 'consumer'
   
   # Never assume that a component supports being reconnected
   # at runtime, it might not be the case
   #
   # If you have the choice, connect before the component is
   # even configured
-  message_producer.messages.connect_to message_consumer.messages
+  producer.messages.connect_to consumer.messages
   
-  message_producer.configure
-  message_producer.start
+  producer.configure
+  producer.start
   
-  message_consumer.start
+  consumer.configure
+  consumer.start
   
-  Readline::readline("Press ENTER to exit\n") do
-  end 
+  Readline::readline("Press ENTER to exit\n")
+ 
 end
 ~~~
 
