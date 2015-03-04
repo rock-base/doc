@@ -1,0 +1,35 @@
+---
+page_title: Impressum
+title: "Rock: the Robot Construction Kit"
+rock_page_style: centered
+template: index.template
+---
+
+<div>
+	<h2>Inhaltlicher Kontakt</h2>
+	Jakob.Schwendner&#064;dfki.de<br/>
+	Thomas.Roehr&#064;dfki.de<br/>
+	sylvain.joyeux&#064;m4x.org
+
+    <h2>Deutsches Forschungszentrum f&uuml;r K&uuml;nstliche Intelligenz GmbH</h2>
+    <p>
+	<b>Standort Bremen<br />Robotics Innovation Center<br /></b>
+	Robert-Hooke-Str. 1<br />
+	28359 Bremen<br />
+	Telefon: +49 (0)421 / 178 45 - 0<br />
+	Telefax: +49 (0)421 / 178 45 - 4150<br />
+	E-Mail: robotik&#064;dfki.de</a><br />
+	Leitung: Prof. Dr. Frank Kirchner
+    </p>
+   
+    <p>
+    <b>Gesch&auml;ftsf&uuml;hrung:</b><br />
+    Prof. Dr. Dr. h.c. mult. Wolfgang Wahlster (Vorsitzender),<br />
+    Dr. Walter Olthoff<br /><br />
+    Vorsitzender des Aufsichtsrates:<br />
+    Prof. Dr. h.c. Hans A. Aukes<br /><br />
+    Amtsgericht Kaiserslautern<br />
+    HRB 2313<br />
+    ID-Nummer DE 148 646 973
+    </p>
+</div>
