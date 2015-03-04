@@ -6,6 +6,12 @@ template: index.template
 ---
 
 <div>
+
+	<p>
+    <b>This page gives contact information about the people maintaining the web site and the organization hosting it.</b><br/><br/>
+    Rock is an Open Source project, it is maintained by many more people with different affiliations.
+    </p>  
+
 	<h2>Inhaltlicher Kontakt</h2>
 	Jakob.Schwendner&#064;dfki.de<br/>
 	Thomas.Roehr&#064;dfki.de<br/>
