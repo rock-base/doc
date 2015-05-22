@@ -27,7 +27,7 @@ simplest of all is a single component model (either task or composition). For
 instance:
 
 ~~~ ruby
-CorridorNavigation::FollowingTask
+OroGen::CorridorNavigation::FollowingTask
 ~~~
 
 tells the system that you require a component of type
@@ -45,7 +45,7 @@ Instanciating it therefore requires to tell the system what should be used to
 provide this pose. This is done by the #use statement:
 
 ~~~ ruby
-Rock::CorridorNavigation::Servoing.
+Compositions::CorridorNavigation::Servoing.
   use('pose' => PoseEstimation)
 ~~~
 
@@ -58,7 +58,7 @@ needing some more specification, you would specify it the same way (don't worry,
 there are better ways to write that down)
 
 ~~~ ruby
-Rock::CorridorNavigation::Servoing.
+Compositions::CorridorNavigation::Servoing.
   use('pose' => PoseEstimation.
     use('orientation' => XsensImu::Task)
   )
@@ -70,7 +70,7 @@ arguments]({rock_api: tools/roby}/building/task_models.html)).
 This is simply done with #with_arguments:
 
 ~~~ ruby
-Rock::CorridorNavigation::Servoing.
+Compositions::CorridorNavigation::Servoing.
   with_arguments(:target_point => Eigen::Vector3.new(10, 12, 0)).
   use('pose' => PoseEstimation.
     use('orientation' => XsensImu::Task)
@@ -81,7 +81,7 @@ Finally, a special case of task arguments is the handling of the [task
 contexts configuration](task_contexts.html#configuration). One specifies it with #with_conf:
 
 ~~~ ruby
-Rock::CorridorNavigation::Servoing.
+Compositions::CorridorNavigation::Servoing.
   with_arguments(:target_point => Eigen::Vector3.new(10, 12, 0)).
   use('pose' => PoseEstimation.
     use('orientation' => XsensImu::Task.
@@ -96,7 +96,7 @@ selected composition / task provides multiple services of the same kind). This
 is done by providing the service as selection, instead of only the task.
 
 ~~~ ruby
-Rock::CorridorNavigation::Servoing.
+Compositions::CorridorNavigation::Servoing.
   with_arguments(:target_point => Eigen::Vector3.new(10, 12, 0)).
   use('pose' => PoseEstimation.pose_srv)
 ~~~
@@ -105,7 +105,7 @@ when done on a full instance requirement object, it has to be done at the end
 (e.g. after the use() and other statements)
 
 ~~~ ruby
-Rock::CorridorNavigation::Servoing.
+Compositions::CorridorNavigation::Servoing.
   with_arguments(:target_point => Eigen::Vector3.new(10, 12, 0)).
   use('pose' => PoseEstimation.
     use('orientation' => XsensImu::Task.

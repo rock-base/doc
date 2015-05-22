@@ -10,7 +10,7 @@ and Vizkit which are libraries for displaying online data and log data.
 
 Finding available packages and oroGen tasks
 -------------
-Rock's [package directory](/package_directory.html) gives you a general
+Rock's [package directory](../../package_directory.html) gives you a general
 overview of available 'standard' packages, oroGen tasks and types that are used
 on oroGen tasks. It also gives you links to the API documentation for packages
 that provide one. Go have a look.

@@ -15,7 +15,7 @@ necessary.
 This tutorial directly builds on the previous tutorials. Additionally, you have
 to have the rock packages gui/vizkit and gui/rock_widget_collection installed.
 
-In case you are starting here, the required packages are mentioned on the [introduction page](/documentation/advanced_tutorials/index.html).
+In case you are starting here, the required packages are mentioned on the [introduction page](index.html).
 
 Displaying Data with Vizkit
 -----------
@@ -42,7 +42,7 @@ Vizkit.control log
 Vizkit.exec
 ~~~
 
-For testing purposes, a small camera log file can be found [here](https://gitorious.org/rock-tutorials/advanced_data_visualization/blobs/raw/5ab9c7688e4b16980c05e5a3c1f0c7a24f3b21df/logfiles/bottom_camera.0.log). It shows an underwater test pipeline used during a student competition in Italy, [Sauc-E](http://www.sauc-europe.org/).
+For testing purposes, a small camera log file can be found [here](https://github.com/rock-tutorials/tutorials-advanced_data_visualization/raw/master/logfiles/bottom_camera.0.log). It shows an underwater test pipeline used during a student competition in Italy, [Sauc-E](http://www.sauc-europe.org/).
 
 ![ImageView Widget](210_image_viewer.png)
 {: .align-center}
@@ -50,7 +50,7 @@ For testing purposes, a small camera log file can be found [here](https://gitori
 Designing a custom GUI 
 -----------
 Vizkit is able to load ui files created with the Qt Designer. In this case, a small GUI is loaded whose ui file
-can be found [here (right click - save as)](https://gitorious.org/rock-tutorials/advanced_data_visualization/raw/5ab9c7688e4b16980c05e5a3c1f0c7a24f3b21df:resources/test_gui.ui). If you want to create your own ui file, use the *Qt
+can be found [here (right click - save as)](https://github.com/rock-tutorials/tutorials-advanced_data_visualization/raw/master/resources/test_gui.ui). If you want to create your own ui file, use the *Qt
 Designer*, e.g. by calling *designer* on the command line.
 
 This ui basically creates a window with two dedicated labels for writing strings 

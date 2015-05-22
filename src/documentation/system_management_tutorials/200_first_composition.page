@@ -97,7 +97,6 @@ is available:
 
 ~~~
 rock-inspect rock_tutorial::RockTutorialControl --show-deployments
-~~~
 
 ==========================================================
 Deployment name:  rock_tutorial

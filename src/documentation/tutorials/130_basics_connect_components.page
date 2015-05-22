@@ -150,7 +150,7 @@ The call to 'connect_to' for an output port allows you to connect it with an inp
 Run your ruby script
 
 ~~~ cpp
-ruby start.rb
+ruby connect.rb
 ~~~
 
 If everything has been done correctly, you will eventually see the consumer printing messages to the console, in the periodicity you set on the message producer: 

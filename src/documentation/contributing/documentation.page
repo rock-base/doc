@@ -47,7 +47,7 @@ This will generate the HTML code in the base/doc/out/ directory. Simply open
 base/doc/out/index.html with a web browser to see the generated website. Once
 you are happy with your changes, commit them to git.
 
-You then will [propose your changes to the Rock developers](gitorious.html) ...
+You then will [propose your changes to the Rock developers](https://github.com/rock-core/base-doc/pulls) ...
 and get their thanks !
 
 Finally, we are keen on improving the Rock documentation. Getting commit rights

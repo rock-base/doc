@@ -5,7 +5,7 @@ title: Overview
 Rock offers both a __rich development environment__ and a collection of
 __ready-to-use packages__. This documentation pages describe the development
 environment as well as some important "core" libraries. For the package
-documentation, got to the [package list](/pkg)
+documentation, go to the [package list](/pkg)
 
 
 Development Workflow

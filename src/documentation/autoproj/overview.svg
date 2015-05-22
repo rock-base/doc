@@ -624,12 +624,12 @@
          x="105.41182"
          y="67.138107"
          style="font-size:18px"
-         id="tspan4323">- gitorious: rock-toolchain/package_set.git</tspan><tspan
+         id="tspan4323">- github: rock-core/package_set</tspan><tspan
          sodipodi:role="line"
          x="105.41182"
          y="89.638107"
          id="tspan3057"
-         style="font-size:18px">- gitorious: rock/package_set.git</tspan></text>
+         style="font-size:18px">- github: rock-core/rock-package_set</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#TriangleOutL-52-5);color:#000000;stroke-miterlimit:4;stroke-dasharray:1, 2;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
        d="m 480,214.8778 c -69.53953,-0.41842 -125.71429,10.49021 -127.14286,60.49021"
@@ -761,7 +761,7 @@
          x="86.428574"
          y="657.7193"
          style="font-size:22px"
-         id="tspan4677">(Special: rock.toolchain must be explicitely selected to</tspan><tspan
+         id="tspan4677">(Special: rock.toolchain must be explicitly selected to</tspan><tspan
          sodipodi:role="line"
          x="86.428574"
          y="685.2193"

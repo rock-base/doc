@@ -67,10 +67,10 @@ packages:
  * the "orogen" part which is providing an integrated oroGen component for the
    libraries.
 
-For instance, in the [rock-drivers](http://gitorious.org/rock-drivers)
+For instance, in the [rock-drivers](https://github.com/rock-drivers)
 subproject, there is [the Hokuyo driver
-library](http://gitorious.org/rock-drivers/hokuyo) and the corresponding [oroGen
-component](http://gitorious.org/rock-drivers/orogen-hokuyo).
+library](https://github.com/rock-drivers/drivers-hokuyo) and the corresponding [oroGen
+component](https://github.com/rock-drivers/drivers-orogen-hokuyo).
 
 Mapping between local installation and github repositories
 -------------------------------------------------------------
@@ -79,7 +79,7 @@ A library (non-oroGen package) installed on the local system as
 
     category/package_name
 
-will be managed in a gitorious repository called
+will be managed in a GitHub repository called
 
     http://github.com/GITHUB_ORGANIZATION/category-package_name
 
@@ -89,7 +89,7 @@ An oroGen package installed on the local system as
 
     category/orogen/package_name
 
-will be managed in a gitorious repository called
+will be managed in a GitHub repository called
 
     http://github.com/GITHUB_ORGANIZATION/category-orogen-package_name
 
@@ -100,7 +100,7 @@ same "package_name". For instance, when installed
     drivers/hokuyo
     drivers/orogen/hokuyo
 
-and on gitorious:
+and on GitHub:
 
     http://github.com/rock-drivers/drivers-iodrivers_base
     http://github.com/rock-drivers/drivers-orogen-iodrivers_base

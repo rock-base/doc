@@ -7,7 +7,7 @@ Orocos::Log::Replay is a Ruby class which eases common tasks on log files. It
 provides methods to access, filter and replay the data inside Ruby scripts, or
 into oroGen components. 
 
-**Note:** See also [Displaying Log Files](/documentation/graphical_user_interface/300_displaying_logfiles.html) if you want to visualize the logged samples.
+**Note:** See also [Displaying Log Files](../graphical_user_interface/300_displaying_logfiles.html) if you want to visualize the logged samples.
 {: .note}
 
 Features

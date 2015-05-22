@@ -81,7 +81,7 @@ do autoproj's job, namely:
 The rest of this page will outline these steps for you
 
 __To install the package dependencies__ the best way is to have a look on the
-[package directory](/package_directory.html). The dependencies of each package
+[package directory](../../package_directory.html). The dependencies of each package
 are listed there.
 
 __To configure and build the package__, the steps are essentially the same than
