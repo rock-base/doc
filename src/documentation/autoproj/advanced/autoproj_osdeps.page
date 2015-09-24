@@ -24,19 +24,19 @@ Adding support in autoproj
 
  1. you will have to find out how your OS is detected by autoproj. To do so, run
     
-      ~~~
-      autoproj --os-version
-      ~~~
+    ~~~
+    autoproj --os-version
+    ~~~
 
-      On Debian, the result is:
+    On Debian, the result is:
 
-      <pre class="commandline">
-      name: debian
-      version:
-        squeeze/sid
-        unstable
-        sid
-      </pre>
+    ~~~
+    name: debian
+    version:
+      squeeze/sid
+      unstable
+      sid
+    ~~~
 
     The interesting field is the 'name' field. If the result of the above
     command is "no information about that OS", then you will need to modify the

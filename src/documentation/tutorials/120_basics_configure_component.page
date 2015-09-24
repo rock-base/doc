@@ -359,7 +359,7 @@ not be changed at runtime. If a component allows dynamic changes of properties,
 those have to be declared explicitly as explained hereafter. 
 
 The framework automatically creates a callback function which is called
-within the task's thread. This functions makes it possible that changes of
+within the task's thread. This function makes it possible that changes of
 properties can be accepted or rejected if they are invalid.
 
 In the messages.orogen file, a dynamic property must be declared as
@@ -379,7 +379,7 @@ bool Task::setSome_Dynamic_Property(double value)
 }
 ~~~
 
-Note that if you modify a task which already exist, the code must be copied out 
+Note that if you modify a task which already exists, the code must be copied out
 of the _templates/tasks_ folder!
 
 The base class is called to make sure that superordinated tasks are called and

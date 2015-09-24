@@ -61,7 +61,7 @@ Dynamic transformations are declared with
 
 ~~~ ruby
 dynamic_transform "producer_task_name.port_name",
-  "source_frame_name" => "target_frame_name",
+  "source_frame_name" => "target_frame_name"
 ~~~
 
 Where _producer_task_name_ and _port_name_ refer to the data stream that defines
@@ -72,12 +72,12 @@ For our laser filter example, a possible configuration file would look like:
 
 ~~~ ruby
 # The frame names in this file are arbitrary !
-static_transform Eigen::Vector3d.new(0.3, 0, 0),
+static_transform Eigen::Vector3.new(0.3, 0, 0),
   "Body" => "ServoFrom"
-static_transform Eigen::Quaternion.from_angle_axis(1, Eigen::Vector3d::UnitX),
-  "ServoTo" => "Lidar",
+static_transform Eigen::Quaternion.from_angle_axis(1, Eigen::Vector3.UnitX),
+  "ServoTo" => "Lidar"
 dynamic_transform "servo.transform_samples",
-  "ServoFrom" => "ServoTo",
+  "ServoFrom" => "ServoTo"
 ~~~
 
 Ruby scripting

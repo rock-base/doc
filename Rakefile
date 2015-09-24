@@ -1,8 +1,8 @@
 
 task 'doc' do
-    if !system('webgen')
-        raise "webgen generation failed"
-    end
+    gem 'cmdparse', '2.0.6'
+    require 'webgen/cli'
+    Webgen::CLI::CommandParser.new.parse
 end
 task 'default' => 'doc'
 

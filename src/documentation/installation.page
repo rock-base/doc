@@ -90,9 +90,9 @@ Installation: the easy way
       . /path/to/the/directory/env.sh
       {: .commandline}
 
- 6. Read the [autoproj guide for basic usage](/documentation/autoproj/basic_usage.html) to know the
+ 6. Read the [autoproj guide for basic usage](autoproj/basic_usage.html) to know the
     basic operations of the build system. More bootstrapping documentation is
-    also available [at the same place](/documentation/autoproj/bootstrap.html)
+    also available [at the same place](autoproj/bootstrap.html)
 
 Other bootstrapping options
 ---------------------------
@@ -102,7 +102,7 @@ Other bootstrapping options
    integration servers'''. It is going to build all the packages that are
    defined within Rock, which is probably not what you want.
    You probably want to install the base system and then cherry-pick the packages you want. Have a look at [the package
-   directory](/package_directory.html) and add the package names to the
+   directory](../package_directory.html) and add the package names to the
    layout section in autoproj/manifest. For instance,  if you want to
    get the [Xsens IMU component](../package_directory/packages/drivers_orogen_xsens_imu/index.html),
    the layout section should look like:

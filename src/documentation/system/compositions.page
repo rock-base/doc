@@ -19,24 +19,39 @@ class ModelName < Syskit::Composition
 end
 ~~~
 
-Since they are class definitions, the new model is defined in the current
-namespace. I.e., one (and probably should) could do
+<div class="block" markdown="1">
+__Generation__ A template for a new composition as well as its related unit
+tests, following Syskit's naming conventions and file system structure, can be
+generated with
 
-~~~ ruby
-module MyProject
-  class ModelName < Syskit::Composition
-    ...
-  end
-end
+~~~
+syskit gen cmp namespace/name_of_composition
 ~~~
 
-__Filesystem__ Compositions are defined in models/blueprints/. The file
-names should be the snake_case version of the composition name (e.g.
-models/blueprints/model_name.rb for the composition defined above). Any task context,
-composition or data service used in the composition file should be required first
-with either the using_task_library statement (for task contexts) or a simple
-require of the relevant file. Use [syskit browse](general_concept.html#browsing)
-to find out what is defined where.
+for instance
+
+~~~
+syskit gen cmp localization/global_pose_estimator
+~~~
+
+in the rock bundle would create the
+Rock::Compositions::Localization::GlobalPoseEstimator composition in
+models/compositions/localization/global_pose_estimator.rb and the associated
+test/compositions/localization/test_global_pose_estimator.rb file in the test
+folder. Files in the hierarchy (e.g. models/compositions/localization.rb and
+test/compositions/suite_localization.rb) are updated to require the new file(s).
+</div>
+
+__Naming__ compositions are by convention defined in the
+BundleName::Compositions module, and are saved in
+models/compositions/name_of_composition.rb. For instance, a
+Localization::GlobalPoseEstimator composition in the Rock bundle would be saved
+in models/compositions/localization/global_pose_estimator.rb and the full class
+name would be Rock::Compositions::Localization::GlobalPoseEstimator. Any task
+context, composition or data service used in the composition file should be
+required first with either the using_task_library statement (for task contexts)
+or a simple require of the relevant file. Use [syskit
+browse](general_concept.html#browsing) to find out what is defined where.
 {: .block}
 
 The main definition statements in a composition are 'add' and 'connect'
@@ -50,25 +65,23 @@ end
 The "add" line adds a child to the composition, i.e. declares that a component
 of that type needs to run to perform the function of this composition. Children
 need to be given a name (which should reflect the child's role). For instance,
-the rock_ugv_nav bundle defines the Rock::SLAM::Odometry composition with:
+the rock_ugv_nav bundle defines the SLAM::Odometry composition with:
 
 ~~~ ruby
-module Rock
-  module SLAM
-    class Odometry < Syskit::Composition
-      add Base::ActuatorControlledSystemSrv, :as => 'motors'
-      add Base::OrientationSrv, :as => 'imu'
-      add Skid4Odometry::Task, :as => 'odometry'
-    end
+module SLAM
+  class Odometry < Syskit::Composition
+    add Services::ActuatorControlledSystem, :as => 'motors'
+    add Services::Orientation, :as => 'imu'
+    add OroGen::Skid4Odometry::Task, :as => 'odometry'
   end
 end
 ~~~
 
 In this example, the composition would require three components:
 
- * a component providing the Base::ActuatorControlledSystemSrv service, which gives
+ * a component providing the Services::ActuatorControlledSystem service, which gives
    motor data
- * a component providing the Base::OrientationSrv service, which gives the
+ * a component providing the Services::Orientation service, which gives the
    orientation in space of the system whose odometry we're computing
  * finally, the task context that is going to do the computation (from the
    {rock_pkg: slam/orogen/odometry} package).
@@ -77,16 +90,14 @@ This is all well, but (obviously), these children need to be connected together.
 This is done with:
 
 ~~~ ruby
-module Rock
-  module SLAM
-    class Odometry < Syskit::Composition
-      add Base::ActuatorControlledSystemSrv, :as => 'motors'
-      add Base::OrientationSrv, :as => 'imu'
-      add Skid4Odometry::Task, :as => 'odometry'
+module SLAM
+  class Odometry < Syskit::Composition
+    add Services::ActuatorControlledSystemSrv, :as => 'motors'
+    add Services::OrientationSrv, :as => 'imu'
+    add OroGen::Skid4Odometry::Task, :as => 'odometry'
 
-      imu_child.connect_to odometry_child
-      motors_child.connect_to odometry_child
-    end
+    imu_child.connect_to odometry_child
+    motors_child.connect_to odometry_child
   end
 end
 ~~~
@@ -124,7 +135,7 @@ then go in bundles/rock_ugv_nav and run
 syskit browse
 ~~~
 
-On the left side, select the Rock::SLAM::Odometry model. The right pane will
+On the left side, select the Rock::Compositions::SLAM::Odometry model. The right pane will
 show you the following graphical representation of the composition:
 
 TODO: add figure.
@@ -139,13 +150,11 @@ ports on themselves. They "get" ports by exporting ports from their children
 (one can export both input and output ports this way):
 
 ~~~ ruby
-module Rock
-  module SLAM
-    class Odometry < Syskit::Composition
-      ...
-      export odometry_child.odometry_delta_samples_port
-      provides Base::RelativePoseSRv
-    end
+module SLAM
+  class Odometry < Syskit::Composition
+    ...
+    export odometry_child.odometry_delta_samples_port
+    provides Services::RelativePose
   end
 end
 ~~~
@@ -165,13 +174,11 @@ the children.
 For instance:
 
 ~~~ ruby
-module Rock
-  module SLAM
-    class Odometry < Syskit::Composition
-      ...
-      conf 'high_speed',
-        'pose_provider' => ['default', 'high_sampling_rate']
-    end
+module SLAM
+  class Odometry < Syskit::Composition
+    ...
+    conf 'high_speed',
+      'pose_provider' => ['default', 'high_sampling_rate']
   end
 end
 ~~~
@@ -187,7 +194,7 @@ Dependency specification: tasks and behaviours (advanced)
 When one adds a child to a composition, he also declares that, at runtime, the
 composition will need an instance of this child to run. Having a __working__
 odometry in a system requires, for instance, a properly configured instance of
-Skid4Odometry::Task to run. The default dependency setup therefore defines that
+OroGen::Skid4Odometry::Task to run. The default dependency setup therefore defines that
 there is a dependency constraint failure if the child task stops while the
 composition is running. In other words, [Roby's dependency
 relation](../../api/tools/roby/task_relations/dependency.html) is
@@ -213,14 +220,14 @@ could be defined with:
 
 ~~~ ruby
 class Goto < Syskit::Composition
-  add TrajectoryFollower::Task,
+  add OroGen::TrajectoryFollower::Task,
      :success => [:reached_the_end],
      :as => 'follower'
 end
 ~~~
 
 where reached_the_end is one of the runtime states reported by the
-TrajectoryFollower::Task component
+OroGen::TrajectoryFollower::Task component
 
 Extending the Composition Models
 --------------------------------

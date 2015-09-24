@@ -43,7 +43,7 @@ There are multiple advantages for using oroGen:
    complete Rock toolchain, from simple command-line execution to advanced
    model-based system management
 
-This tutorial does not cover all details of Orocos components but you will find further information in the [oroGen documentation](/documentation/orogen/index.html).
+This tutorial does not cover all details of Orocos components but you will find further information in the [oroGen documentation](../orogen/index.html).
 
 Similar to the creation of a library you create an oroGen component using the command 'rock-create-orogen'. 
 
@@ -183,7 +183,7 @@ compare your files against the files in the tutorial package set.
 ### Writing the task
 Now that you have created the oroGen component, you can embed the functionality that the message_driver library provides in order to achieve a proper message producing component. 
 
-Calling **amake** created several new files. For now, you only need to care about the files in the _tasks_ subfolder and you can safely ignore the _templates_ folder for the moment. 
+The second call to **rock-create-orogen** created several new files. For now, you only need to care about the files in the _tasks_ subfolder and you can safely ignore the _templates_ folder for the moment.
 
 Within the subfolder _tasks_ of the created component, you will find two files: _Producer.hpp_ and _Producer.cpp_. They contain the skeleton for the Orocos component that has been created. Within _Producer.hpp_, you will find the declarations of so-called hook methods: configureHook, startHook, stopHook, errorHook and cleanupHook. For this tutorial we will focus on the updateHook
 (more information about these methods can be found [here](../orogen/task_states.html)).
@@ -231,7 +231,7 @@ Producer::~Producer()
 ~~~
 
 Next, you will implement the updateHook.  
-You will request a new message from the driver and write it to the output port 'messages'. The port is identified by its name and a '_' which is prefixed to all orogen elements. The update port will be triggered at 1Hz. Both the name of the port and the periodicity have been specified in the _.orogen_ file.
+You will request a new message from the driver and write it to the output port 'messages'. The port is identified by its name and a '\_' which is prefixed to all orogen elements. The update port will be triggered at 1Hz. Both the name of the port and the periodicity have been specified in the _.orogen_ file.
 
 ~~~ cpp
 void Producer::updateHook()
@@ -260,7 +260,7 @@ Run it
 -----------
 
 Now, that you have a component ready to run, you probably want to see it running. Rock offers a ruby scripting interface for that purpose: [orocos.rb](../runtime/index.html)
-Create a subfolder 'scripts' in the _messages_ component (_~/dev/tutorials/orocos/messages_) and create a file _start.rb_.
+Create a subfolder 'scripts' in the _messages_ component (_~/dev/tutorials/orogen/messages_) and create a file _start.rb_.
 
 ~~~ ruby
 require 'orocos'

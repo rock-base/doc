@@ -12,7 +12,7 @@ The following section describes the functionality of the base logger and how to 
 Adding the base logger to a library
 --------------------------------
 
-When using the [Rock CMake Macros](/documentation/packages/cmake_macros.html), integration of the base logger is fairly easy. 
+When using the [Rock CMake Macros](../packages/cmake_macros.html), integration of the base logger is fairly easy.
 All you need to do is adding *base-lib* to your list of package config dependencies and 
 include the header *base/logging.h* where logging is needed. 
 

@@ -20,7 +20,7 @@ samples unnecessarily.
 
 The choice of the timeout is also important, but not so critical: the timeout is
 a last resort mean to keep the data flowing. One should prefer using [advanced
-means of monitoring](/documentation/system).
+means of monitoring](../system).
 
 Monitoring
 ----------

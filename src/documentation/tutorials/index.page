@@ -20,7 +20,7 @@ Quick Start.
 --------------------------
 In order to start with the tutorial, you require a minimal but working
 installation of Rock. Just follow the installation procedure as described in the
-[step-by-step installation guide](/documentation/installation.html).
+[step-by-step installation guide](../installation.html).
 
 To check if you are ready for your first tutorial, open your console and enter 'which rock-create-lib' and verify that the command returns a full path to the 'rock-create-lib'-script. 
 
@@ -28,7 +28,7 @@ Tutorials Outline
 -----------------
 
 The tutorials work along a typical Rock-workflow, and will give you a guideline on how to approach building software for your robotic system. 
-The typical workflow starts with implementing functionality in a library, allowing for a framework independent implementation, and proceeds further to generating an orogen (thus framework specific) component, and gives you some details on how to enhance your data analysis using logging and data visualization ([more](/documentation/orogen/index.html)).
+The typical workflow starts with implementing functionality in a library, allowing for a framework independent implementation, and proceeds further to generating an orogen (thus framework specific) component, and gives you some details on how to enhance your data analysis using logging and data visualization ([more](../orogen/index.html)).
 
 The showcase example allows you to repeat a more complex example to deepen your knowledge of how to use Rock, while you can still pick dedicated topics from the advanced tutorials. 
 
@@ -72,7 +72,7 @@ autoproj/manifest should look like:
 ~~~ text
 package_sets:
    - github: rock-core/package_set
-   - gitorious: rock-tutorials/package_set
+   - github: rock-tutorials/package_set
 
 layout:
    - rock.core

@@ -18,23 +18,23 @@ then access the log streams as if they were tasks and ports:
 #library for displaying data
 require 'vizkit'
 
-#load log file 
-log = Orocos::Log::Replay.open("producer.0.log")
+#load log file
+log = Orocos::Log::Replay.open("message_producer.0.log")
 
-#now you can access all logged data by 
+#now you can access all logged data by
 #addressing them by their task and port name
 #log.task_name.port_name
 
 #start deployment
-Orocos.run "faster_message_producer" do 
-    consumer = Orocos.name_service.get "consumer"
+Orocos.run 'messages::Consumer' => 'message_consumer' do
+    message_consumer = Orocos.name_service.get "message_consumer"
 
-    log.producer.messages.connect_to consumer.messages
-    
+    log.message_producer.messages.connect_to message_consumer.messages
+
     #still needed since we added "needs_configuration"
     #in the orogen task definition
-    consumer.configure
-    consumer.start
+    message_consumer.configure
+    message_consumer.start
 
     #open control widget and start replay
     Vizkit.control log
@@ -48,16 +48,17 @@ you can redirect it to code blocks:
 ~~~ ruby
 require 'vizkit'
 
-log = Orocos::Log::Replay.open("producer.0.log")
-Orocos.run "faster_message_producer" do 
-    consumer = Orocos.name_service.get "consumer"
-    log.producer.messages.connect_to consumer.messages
-    
-    consumer.configure
-    consumer.start
+log = Orocos::Log::Replay.open("message_producer.0.log")
+Orocos.run 'messages::Consumer' => 'message_consumer' do
+    message_consumer = Orocos.name_service.get "message_consumer"
+
+    log.message_producer.messages.connect_to message_consumer.messages
+
+    message_consumer.configure
+    message_consumer.start
 
     # Redirect data to a code block
-    log.producer.messages.on_data do |sample|
+    log.message_producer.messages.on_data do |sample|
         puts sample.time
     end
 

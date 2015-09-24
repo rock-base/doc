@@ -81,7 +81,7 @@ exclude_packages:
 
 If another required package (i.e. a package listed in the layout) depends on an
 excluded package, the default behaviour is to fail with
-[an error](/documentation/autoproj/error_messages.html#exclusions).
+[an error](error_messages.html#exclusions).
 
 For some package sets, such as the rock package set, this behaviour can be
 relaxed by setting the package set's weak_dependencies flag to true in e.g. the
@@ -205,26 +205,20 @@ after all source files.
 
 Some examples:
 
- * fixing dependencies: if a dependency is not listed in a package's manifest,
-   then you can fix it by adding the following in <tt>autoproj/overrides.rb</tt>
+ *  fixing dependencies: if a dependency is not listed in a package's manifest,
+    then you can fix it by adding the following in <tt>autoproj/overrides.rb</tt>
 
-<div class="indent">
+    ~~~ ruby
+    a = Autobuild::Package['a_package']
+    a.depends_on "other_package"
+    ~~~
 
-~~~ ruby
-a = Autobuild::Package['a_package']
-a.depends_on "other_package"
-~~~
-</div>
+ *  changing the configuration of some cmake package:
 
- * changing the configuration of some cmake package:
-
-<div class="indent">
-
-~~~ ruby
-a = Autobuild::Package['a_package']
-a.define "CONFIG_VAR", "CONFIG_VALUE"
-~~~
-</div>
+    ~~~ ruby
+    a = Autobuild::Package['a_package']
+    a.define "CONFIG_VAR", "CONFIG_VALUE"
+    ~~~
 
 Building packages selectively on the command line
 -------------------------------------------------

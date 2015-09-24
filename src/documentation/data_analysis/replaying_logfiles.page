@@ -7,7 +7,7 @@ Orocos::Log::Replay is a Ruby class which eases common tasks on log files. It
 provides methods to access, filter and replay the data inside Ruby scripts, or
 into oroGen components. 
 
-**Note:** See also [Displaying Log Files](/documentation/graphical_user_interface/300_displaying_logfiles.html) if you want to visualize the logged samples.
+**Note:** See also [Displaying Log Files](../graphical_user_interface/300_displaying_logfiles.html) if you want to visualize the logged samples.
 {: .note}
 
 Features
@@ -128,7 +128,7 @@ replay.run(true,1) # replay as fast as the data were recorded
 replay.step        # replay one data sample
 ~~~
 
-<div class="warning">
+<div class="warning" markdown="1">
 Only ports are replayed which are connected to RTT components, for which a
 reader has been created or a filter was specified. If you want to specify that
 one particular stream should be replayed, set its #tracked# property to true:

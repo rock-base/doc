@@ -18,7 +18,7 @@ Bundles
 Bundles in Rock are used to gather all that form a consistent robot application
 together. Outside of Syskit, they gather configuration files ([for task
 contexts](../runtime/configuration.html) and for outside tooling such as the
-[transformer](../data_processing)
+[transformer](../data_processing/)
 
 When using Syskit, they also will contain all the Syskit-specific models and
 application information. Whenever you start a new Syskit-based application,
@@ -61,7 +61,7 @@ that has inputs and outputs, and can report about its execution. In practice, it
 can be:
 
  * a _task context_, i.e. an actual component that is [defined in oroGen and
-   implemented in C++](../orogen)
+   implemented in C++](../orogen/)
  * a _data service_, which is an abstract placeholder for "concrete" components
    (compositions or task contexts).
  * a _composition_, which represents a way to bind components together to form

@@ -20,7 +20,7 @@ is described later on these model's respective pages: [compositions](composition
 A data service is defined with
 
 ~~~ ruby
-data_service_type "OrientationSrv" do
+data_service_type "Orientation" do
     output_port "orientation_samples",
         "base/samples/RigidBodyState"
 end
@@ -32,27 +32,44 @@ using modules:
 
 ~~~ ruby
 module Base
-  data_service_type 'OrientationSrv' do
+  data_service_type 'Orientation' do
     ...
   end
 end
 ~~~
 
-which is then referred to as Base::OrientationSrv. The syntax for the input and
+which is then referred to as Base::Orientation. The syntax for the input and
 output ports is the same [than in oroGen files](../orogen/task_interface.html#ports).
 
-__Naming__ it is good practice to suffix the service names with "Srv", so
-that they can be recognized from compositions and task contexts.
+<div class="block" markdown="1">
+__Generation__ Template files for a new data service can be generated with
+
+~~~
+syskit gen subnamespace/name_of_service
+~~~
+
+for instance
+
+~~~
+syskit gen localization/pose
+~~~
+
+would create the Rock::Services::Localization::Pose service in
+models/services/localization/pose.rb file, and update
+models/services/localization.rb to require the pose file.
+</div>
+
+__Naming__ Services should be placed inside ${BundleName}::Services module (e.g.
+Rock::Services for the rock bundle)
 {: .block}
 
-__Filesystem__ Data services are defined in models/blueprints/. It is customary
-to group them in topic groups (e.g. in the rock bundle,
-models/blueprints/pose.rb regroups all pose-related services). Whenever a data
+__Filesystem__ Data services are defined in models/services/. Whenever a data
 service is used in a syskit file, the file that defines it should be required
 first. Types must be loaded using import_types_from "project", where "project"
 is the oroGen project that defines the type. Use [syskit
 browse](general_concept.html#browsing) to find out what is defined where.
 {: .block}
+
 
 Model Hierarchy
 ---------------
@@ -61,9 +78,9 @@ data service that also provides an Orientation), is reflected by telling Syskit
 that "Y provides X"
 
 ~~~ ruby
-data_service_type "PoseSrv" do
+data_service_type "Pose" do
   output_port "pose_samples", "base/samples/RigidBodyState"
-  provides OrientationSrv
+  provides Orientation
 end
 ~~~
 
@@ -75,13 +92,13 @@ orientation_samples. This information must be given explicitly through _port
 mappings_:
 
 ~~~ ruby
-data_service_type "PoseSrv" do
+data_service_type "Pose" do
     output_port "pose_samples", "base/samples/RigidBodyState"
-    provides OrientationSrv, 'orientation_samples' => 'pose_samples'
+    provides Orientation, 'orientation_samples' => 'pose_samples'
 end
 ~~~
 
 In this definition, the name mapping on the "provides" stanza specifies that the
-"orientation_samples" port of the provided service (OrientationSrv) should be
+"orientation_samples" port of the provided service (Orientation) should be
 replaced by the "pose_samples" port of the new service.
 

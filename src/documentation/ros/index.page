@@ -22,6 +22,6 @@ Future Work
 -----------
 
  - extend the runtime behaviour to be able to bypass roslaunch completely within
-   [Ruby runtime scripts](../runtime)
- - allow usage of ROS nodes within [Syskit](../system)
+   [Ruby runtime scripts](../runtime/)
+ - allow usage of ROS nodes within [Syskit](../system/)
 

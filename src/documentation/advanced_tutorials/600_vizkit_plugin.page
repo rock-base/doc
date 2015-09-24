@@ -154,7 +154,7 @@ Then of course you have to add the method updateDataIntern with the new type as 
 Configuration Interface
 -----------------------
 To add configuration parameters, one should use [the Qt Property
-system](http://qt-project.org/doc/qt-4.8/properties.html). This makes sure that
+system](http://doc.qt.io/qt-4.8/properties.html). This makes sure that
 the properties are accessible on the left configuration pane of the Vizkit3D
 main window. For instance, to make the color configurable:
 

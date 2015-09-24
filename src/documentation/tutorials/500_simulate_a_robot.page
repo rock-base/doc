@@ -72,15 +72,15 @@ public:
 
 private:
     /**
-    * Makes sure that angles are between PI and -PI.
+    * Wraps angles into the interval between -PI and PI.
     */
     void constrainAngle(double& angle);
     
     /**
-    * This method constrains the relativ rotation and
-    * translation of a 2d motion command.
-    * Rotation should be between PI an -PI.
-    * Translation should be between 10 and -10.
+    * This method constrains the relative rotation and
+    * translation velocities of a 2D motion command.
+    * Rotation should be clamped to the interval between -PI and PI.
+    * Translation should be clamped to the interval between -10 and 10.
     */
     void constrainValues(base::commands::Motion2D& motionCommand);
     
@@ -107,7 +107,7 @@ private:
 ~~~
 
 In the source file (_RockControl.cpp_), include the header
-file and to declare the namespace _rock_tutorial_.
+file and declare the namespace _rock_tutorial_.
 
 The constructor and destructor should look as follows:
 
@@ -127,7 +127,7 @@ of the methods _constrainAngle_ and _constrainValues_.
 
 The type base::commands::Motion2D contains a demanded translation and a rotation speed. Translation is measured in m/s and
 rotation in rad/s. The parameter deltaTime defines how much time advanced since the last call. The function 
-+computeNextPose+ computes the new position and and rotation of our rock, in respect to the last pose.
+_computeNextPose_ computes the new position and and rotation of our rock, in respect to the last pose.
 
 ~~~ cpp
 base::samples::RigidBodyState RockControl::computeNextPose(
@@ -138,19 +138,19 @@ base::samples::RigidBodyState RockControl::computeNextPose(
   base::commands::Motion2D command = inputCommand;
   constrainValues(command);
 
-  //calculate acceleration
+  //calculate displacement
   double delta_translation  = command.translation * deltaTime;
   double delta_rotation  = command.rotation * deltaTime;
 
-  //apply new acceleration to rock state
+  //apply new displacement to rock state
   currentHeading += delta_rotation;
   currentRoll += delta_translation * -2;
 
-  //limit the maximum speed and turn rate to sane values
+  //wrap angles into interval [-PI, PI]
   constrainAngle(currentHeading);
   constrainAngle(currentRoll);
 
-  //calculate new absolut values for position and orientation
+  //calculate new absolute values for position and orientation
   currentPose.position += 
     Eigen::AngleAxisd(currentHeading, Eigen::Vector3d::UnitZ()) 
     * Eigen::Vector3d(0, delta_translation, 0);
@@ -315,4 +315,4 @@ the rock.
 
 If you want to steer the rock using a joystick, progress to [the next
 tutorial](510_joystick.html). If you don't have a joystick,
-go steer using a [graphical interface](/documentation/tutorials/520_virtual_joystick.html).
+go steer using a [graphical interface](520_virtual_joystick.html).

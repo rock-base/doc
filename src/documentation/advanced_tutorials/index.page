@@ -6,7 +6,7 @@ sort_info: 0
 Advanced Rock Tutorials
 --------------------------
 After having successfully gone through the [basic
-tutorials](/documentation/tutorials/index.html), you might be interested in
+tutorials](../tutorials/index.html), you might be interested in
 going deeper into Rock.  Tutorials in this section deal with more advanced
 topics, giving you more freedom to setup your system.
 
@@ -43,7 +43,7 @@ autoproj/manifest should look like:
 ~~~ text
 package_sets:
    - github: rock-core/package_set
-   - gitorious: rock-tutorials/package_set
+   - github: rock-tutorials/package_set
 
 layout:
    - rock.core

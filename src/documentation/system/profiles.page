@@ -11,17 +11,40 @@ way to provide a consistent set of predefined component networks that will be
 the actual robot function.
 
 This consistent set of definitions is called a profile. Profiles are defined
-using:
+inside a module with:
 
 ~~~ ruby
-module MyProject
+module Profiles
   profile "ProfileName" do
   end
 end
 ~~~
 
-in the namespace of your choice. The profile object is then referred by (in this case)
-MyProject::ProfileName.
+This creates a ProfileName object in the enclosing module.
+
+<div class="block" markdown="1">
+__Generation__ Template for a profile, following Syskit's naming and filesystem
+conventions, can be created with
+
+~~~
+syskit gen profile name/of_profile
+~~~
+
+for instance
+
+~~~
+syskit gen profile rovers/localization
+~~~
+
+would create a Rock::Profiles::Rovers::Localization profile in
+models/profiles/rovers/localization.rb, and the associated test file
+test/profiles/rovers/test_localization.rb. Files in the hierarchy
+(models/profiles/rovers.rb and test/profiles/suite_rovers.rb) are updated to
+require the newly created files.
+</div>
+
+__Naming__ Profiles are by convention defined under the BundleName::Profiles
+namespace (e.g. Rock::Profiles for the rock bundle). 
 
 __Filesystem__ Profiles are defined in models/profiles/. The file
 names should be the snake_case version of the profile name (e.g.
@@ -38,8 +61,8 @@ create a pose estimation definition:
 
 ~~~ ruby
 profile "Base" do
-  define "pose_estimation", PoseEstimation.
-    use('orientation' => XsensImu::Task.with_conf('default', 'high_sampling_rate'))
+  define "pose_estimation", Compositions::PoseEstimation.
+    use('orientation' => OroGen::XsensImu::Task.with_conf('default', 'high_sampling_rate'))
 end
 ~~~
 
@@ -49,9 +72,9 @@ examples with:
 
 ~~~ ruby
 profile "Base" do
-  define "pose_estimation", PoseEstimation.
-    use('orientation' => XsensImu::Task.with_conf('default', 'high_sampling_rate'))
-  define "servoing", Rock::CorridorNavigation::CorridorServoing.
+  define "pose_estimation", Compositions::PoseEstimation.
+    use('orientation' => OroGen::XsensImu::Task.with_conf('default', 'high_sampling_rate'))
+  define "servoing", Compositions::CorridorNavigation::CorridorServoing.
     use('pose' => pose_estimation_def)
 end
 ~~~
@@ -64,9 +87,9 @@ override that profile-wide setting. For instance:
 
 ~~~ ruby
 profile "Base" do
-  define "pose_estimation", PoseEstimation.
-    use('orientation' => XsensImu::Task.with_conf('default', 'high_sampling_rate'))
-  use Base::PoseSrv => pose_estimation_def
+  define "pose_estimation", Compositions::PoseEstimation.
+    use('orientation' => OroGen::XsensImu::Task.with_conf('default', 'high_sampling_rate'))
+  use Services::Pose => pose_estimation_def
 end
 ~~~
 
@@ -75,37 +98,62 @@ class of type contexts. For instance:
 
 ~~~ ruby
 profile "Base" do
-  use PoseEstimator::Task =>
-    PoseEstimator::Task.use_conf('default', 'low_latency')
+  use OroGen::PoseEstimator::Task =>
+    OroGen::PoseEstimator::Task.use_conf('default', 'low_latency')
 end
 ~~~
 
 Reusing Profiles
 ----------------
 Profiles are often an extension of existing "generic" profiles. For instance,
-Rock's rock_ugv_nav bundle defines the Rock::UGVNav::Skid4 profile that gives
+Rock's rock_ugv_nav bundle defines the RockUGVNav::Profiles::Skid4 profile that gives
 common definitions for any system that is a four-wheeled, skid-steered system.
 This is a great way to provide pre-integrated functionality for some classes of
 systems, leaving only the "binding to the specific platform" to the system's
 integrator.
 
-All definitions from a profile can be imported from another one with the
-use_profile statement:
+Reusing such a profile is done in two steps. First, one must require the file of
+the parent profile
+
+~~~
+require 'rock_ugv_nav/models/profiles/skid4.rb'
+~~~
+
+Second, one has to declare that the "child" profile must reuse the definitions
+from the "parent" profile.
 
 ~~~ ruby
 profile "Robot do
-  use_profile Base
+  use_profile RockUGVNav::Profiles::Skid4
 end
 ~~~
 
-Additionally, definitions from imported profiles can be extended. The extension
-will only apply itself on the current profile, not on the imported one. This is
-done by calling instance requirement calls on the definition object:
+However, the whole purpose of reusing profiles in this case is the ability to
+leave some "inflexion points" in profiles, that are then selected for the
+particular robot it gets applied to. These inflexion points are defined in the
+parent profile with the 'tag' statement:
 
-~~~ ruby
+~~~
+profile "Skid4" do
+  # This profile has a tag of the provided type
+  tag "wheel_control", Services::JointController
+  # The tag can be used as a service would
+  define "manual_control", Compositions::ManualControl.
+    use('controller' => wheel_control_tag)
+end
+~~~
+
+then, when reused, the child profile must say what to use for which tag:
+
+~~~
 profile "Robot" do
-  use_profile Base
-  servoing_def.use('controller' => MyRobotController)
+  use_profile RockUGVNav::Profiles::Skid4,
+    'wheel_control' => OroGen::Robot::ControllerTask
 end
 ~~~
- 
+
+Ensuring that all the inflexion points of a given profile are properly using
+tags is not done every time the profile gets loaded (it would be too costly).
+Instead, this is done at testing time with the it_should_be_self_contained
+statement (which is enabled by default if you use syskit gen).
+

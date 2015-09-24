@@ -28,8 +28,8 @@ Use it
 {: .content-title-noshade-size3}
 
 First and foremost, [follow the tutorials
-!](documentation/tutorials){:.highlight} After that,
-you can have a look at the [existing packages](package_directory.html) and at the [reference documentation](documentation)
+!](documentation/tutorials/){:.highlight} After that,
+you can have a look at the [existing packages](package_directory.html) and at the [reference documentation](documentation/)
 </div>
 
 <div markdown="1" class="content2-container-3col-right">

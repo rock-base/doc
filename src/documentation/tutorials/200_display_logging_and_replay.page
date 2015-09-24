@@ -13,7 +13,7 @@ Task Inspector
 While running a task, you can examine the task with the *Task Inspector*.
 
 * Open another console (don't forget to do '. env.sh' there)
-* Start your message_consumer script from the previous tutorial (_~/dev/tutorials/orogen/message_consumer/scripts/start.rb_)
+* Start your message_consumer script from the previous tutorial (_~/dev/tutorials/orogen/messages/scripts/connect.rb_)
 * In the other console, start the task inspector with *rock-display message_producer*
 
 You will see the task inspector showing the message producer task. When you click it, the entry expands and shows a property section, input port section and an output port section. The output port section also shows the port called _messages_. When you click on an output port, the data sent by the port is being displayed, which allows you to examine it. 

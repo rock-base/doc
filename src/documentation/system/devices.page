@@ -28,22 +28,41 @@ Declaring devices
 -----------------
 Device models are specialized forms of data services. They are declared in the
 same way than data services, but instead using the device_type stanza instead of
-the data_service_type one. It is customary to define all device models under the
-Dev module (see models/blueprints/devices.rb in the rock bundle for a common
-hierarchy)
+the data_service_type one.
 
-The goal, when declaring devices, is to refer to the device as precisely as
-possible. I.e. one would never declare a Camera device. Instead, it would
+
+<div class="block" markdown="1">
+__Generation__ A template file for a new device, which follows syskit naming and
+filesystem convention, can be generated with
+
+~~~
+syskit gen dev name/of_device
+~~~
+
+For instance, running the following command in the rock bundle
+
+~~~
+syskit gen dev cameras/prosilica
+~~~
+
+will generate the Rock::Devices::Cameras::Prosilica device type in
+models/devices/cameras/prosilica.rb and update models/devices.rb as well as
+models/devices/cameras.rb to require the new file(s).
+</div>
+
+__Naming__ Devices are defined under the Devices module in the models/devices/
+folder. The goal, when declaring devices, is to refer to the device as precisely
+as possible. I.e. one would never declare a Camera device. Instead, it would
 declare a FirewireCamera or a ProsilicaCamera. For instance:
 
 ~~~ ruby
-device_type "ProsilicaCamera" do
-  provides Srv::ImageProvider
+device_type "Camera" do
+  provides Services::ImageProvider
 end
 ~~~
 
-In Rock, all devices are categorized within the Dev namespace. See
-models/blueprints/devices.rb in the rock bundle for more information.
+In Rock, all devices are categorized within the Devices namespace. See
+models/devices/categories.rb in the rock bundle for a common categorization
 
 Communication Busses
 --------------------
@@ -61,13 +80,32 @@ by Syskit, which has major advantages:
 A communication bus type is declared with
 
 ~~~ ruby
-com_bus_type('Canbus', :message_type => '/canbus/Message')
+com_bus_type('Canbus', message_type: '/canbus/Message')
 ~~~
 
 where the message type is the type of the input/output ports that are used to
 communicate with that type of communication bus. It is customary to define the
-busses under the Dev::Bus namespace (see models/blueprints/devices.rb in the
+busses under the Dev::Bus namespace (see models/devices/categories.rb in the
 rock bundle for a common hierarchy).
+
+<div class="block" markdown="1">
+__Generation__ A template file for a new com bus, which follows syskit naming and
+filesystem convention, can be generated with
+
+~~~
+syskit gen bus name/of_bus
+~~~
+
+For instance, running the following command in the rock bundle
+
+~~~
+syskit gen dev schilling_dts
+~~~
+
+will generate the Rock::Devices::Bus::SchillingDts bus type in
+models/devices/bus/schilling_dts.rb and update both models/devices/bus.rb as
+well as models/devices.rb to require the new file(s).
+</div>
 
 Declaring Device Drivers
 ------------------------
@@ -78,17 +116,15 @@ This relationship is declared with the driver_for stanza. For instance, in
 models/orogen/camera_prosilica.rb, one writes:
 
 ~~~ ruby
-class CameraProsilica::Task
-  driver_for Dev::CameraProsilica
+class OroGen::CameraProsilica::Task
+  driver_for Rock::Devices::CameraProsilica
 end
 ~~~
 
-It is customary to define all device models in your own bundle's
-models/blueprints/devices.rb. To import the device definitions from other
-bundles, one has to do:
+To import the device definitions from other bundles, one has to do:
 
 ~~~ ruby
-require 'rock/models/blueprints/devices'
+require 'rock/models/devices/camera_prosilica'
 ~~~
 
 i.e. prefix the device file path with the bundle's name.
@@ -96,13 +132,13 @@ i.e. prefix the device file path with the bundle's name.
 Robot Definitions
 -----------------
 Device and combus models are used to describe the interface to the robot
-hardware. This is done in profiles using a robot block:
+hardware. This is done [in profiles](profiles.html) using a robot block:
 
 ~~~ ruby
-syskit_profile 'MyRobot' do
+profile 'MyRobot' do
   robot do
-    device(Dev::CameraProsilica, :as => 'left_camera')
-    device(Dev::CameraProsilica, :as => 'right_camera')
+    device(Devices::CameraProsilica, as: 'left_camera')
+    device(Devices::CameraProsilica, as: 'right_camera')
   end
 end
 ~~~
@@ -113,10 +149,10 @@ devicename_dev form (e.g. left_camera_dev above). For instance:
 ~~~ ruby
 syskit_profile 'MyRobot' do
   robot do
-    device(Dev::CameraProsilica, :as => 'left_camera')
-    device(Dev::CameraProsilica, :as => 'right_camera')
+    device(Devices::CameraProsilica, as: 'left_camera')
+    device(Devices::CameraProsilica, as: 'right_camera')
   end
-  define 'left_image', ImageProcessingPipeline.use(left_camera_dev)
+  define 'left_image', Compositions::ImageProcessingPipeline.use(left_camera_dev)
 end
 ~~~
 
@@ -124,7 +160,7 @@ If only one device driver is available for a given device, is is automatically
 selected. Otherwise, one has to select it explicitly in the device declaration:
 
 ~~~ ruby
-device Dev::CameraProsilica, :using => AlternativeDriver::Task
+device Devices::CameraProsilica, using: OroGen::AlternativeDriver::Task
 ~~~
 
 We will see later on that the device model can hold important information about
@@ -132,12 +168,12 @@ the device, such as the expected update rate. This information can be accessed
 from [the task context's configure method](task_contexts.html#extend) with:
 
 ~~~ ruby
-class CameraProsilica::Task
+class OroGen::CameraProsilica::Task
   def configure
     super
     robot_device # => the Syskit::Robot::MasterDeviceInstance
-                 #    that describes the device this component
-                 #    is interfaced with.
+                 #    object that describes the device this
+                 #    component is interfaced with.
   end
 end
 ~~~
@@ -165,9 +201,9 @@ method](task_contexts.html#extend)
 For instance, let's consider the combus declaration from above
 
 ~~~ ruby
-com_bus(Dev::Bus::Canbus, :as => 'can0')
+com_bus(Devices::Bus::Canbus, :as => 'can0')
 through 'can0' do
-  device(Dev::Actuators::Hbridge, :as => 'actuators').
+  device(Devices::Actuators::Hbridge, :as => 'actuators').
 end
 ~~~
 
@@ -186,7 +222,7 @@ dynamic_output_port /.*/, "canbus/Message"
 
 The usage of the hbridge driver attached to the can combus is therefore
 __valid__ from Syskit's point of view, and the network generation will
-succeed. 
+succeed.
 
 __At runtime__, Syskit will require the combus component to create, during
 configuration, an output port of the same name than the device (i.e.
@@ -195,7 +231,7 @@ configuration, an output port of the same name than the device (i.e.
 be explained later).
 
 ~~~ ruby
-class Combus::Task
+class OroGen::Combus::Task
   def configure
     super
     each_attached_device do |dev|

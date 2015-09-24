@@ -29,7 +29,7 @@ in_menu: false
     }
   }, true);
 </script>
-<link rel="stylesheet" href="//www.google.com/cse/style/look/default.css" type="text/css" />
+<link rel="stylesheet" href="http://www.google.com/cse/style/look/default.css" type="text/css" />
 <style type="text/css">
   .gsc-control-cse {
     font-family: Arial, sans-serif;

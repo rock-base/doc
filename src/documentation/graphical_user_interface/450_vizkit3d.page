@@ -142,7 +142,7 @@ For doing this you have to add the following qt macros to your plugin:
 Q_OBJECT
 Q_PROPERTY(double current_depth READ getCurrentDepth WRITE setCurrentDepth)
 ~~~
-Documentation about the Qt Property System can be found [here](http://doc.qt.nokia.com/stable/properties.html).
+Documentation about the Qt Property System can be found [here](http://doc.qt.io/qt-4.8/properties.html).
 
 If the value of the property changes, in particular by calling setCurrentDepth, you have to emit the SIGNAL 'propertyChanged' with the name of the property that has changed. So the property tree on the Vizkit3DWidget GUI takes notice about the change.
 

@@ -20,7 +20,7 @@ tutorial, so we don't have to implement anything.
 
 In order to get our control, we need a task that supplies us with 'base::commands::Motion2D' (note that this
 type is equivalent to 'base::MotionCommand2D' which you will find in some older components).
-For that it is recommended to take a look into the [package directory](/package_directory.html).
+For that it is recommended to take a look into the [package directory](../../package_directory.html).
 You will have two options there:
 
  * Look for a specific orogen package in the packages section. For instance, you can search for

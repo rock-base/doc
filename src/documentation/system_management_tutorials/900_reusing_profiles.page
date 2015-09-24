@@ -9,6 +9,7 @@ followed the instructions at the bottom of [this page](../tutorials/index.html).
 While the tip of the master branch contains the accumulated result of all the
 tutorials, you can get the specific result of this one by checking out the
 reusing-profiles tag with
+
 ~~~
 git checkout reusing-profiles
 ~~~

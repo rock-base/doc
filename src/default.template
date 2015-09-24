@@ -43,7 +43,7 @@
                   customSearchControl.draw('cse-search-form', options);
                 }, true);
               </script>
-              <link rel="stylesheet" href="//www.google.com/cse/style/look/default.css"
+              <link rel="stylesheet" href="http://www.google.com/cse/style/look/default.css"
               type="text/css" />
               <style type="text/css">
                 input.gsc-input {

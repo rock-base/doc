@@ -20,7 +20,7 @@ solution is to
 name: my_package_set_name
 ~~~
 
- * push it to whatever VCS you want. For git and gitorious, you would do
+ * push it to whatever VCS you want. For git and github, you would do
    something like
 
        git init

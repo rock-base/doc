@@ -13,7 +13,7 @@ This tutorial will give you some hands-on experience on:
 
 If you don't want to execute the following steps yourself, the result can
 also be found in the package 'tutorials/' after you [installed the tutorial
-package set](/documentation/tutorials/index.html#installing).
+package set](index.html#installing).
 
 For this tutorial, it is assumed that your autoproj installation can be found in
 ~/dev.
@@ -89,7 +89,7 @@ create mode 100644 src/dummyproject.pc.in
 Done.
 ~~~
 
-The newly created package comes in some kind of ready-to-run: You can build and install it right away using the build tool [autoproj](/documentation/autoproj/basic_usage.html)
+The newly created package comes in some kind of ready-to-run: You can build and install it right away using the build tool [autoproj](../autoproj/basic_usage.html).
 
 ~~~ text
 amake tutorials/message_driver
@@ -257,7 +257,7 @@ that eventually you can embed the library into oroGen components. The easiest
 way to adapt the build configuration is by adding the package to the manifest's
 layout section. Thus, edit ~/dev/autoproj/manifest and add the package to the
 layout section. Package management in detail is discussed in [Adding
-packages](/documentation/autoproj/adding_packages.html)
+packages](../autoproj/adding_packages.html).
 {: #add-to-manifest}
 
 ***NOTE***: When adding the package, make sure you use the same indentation as

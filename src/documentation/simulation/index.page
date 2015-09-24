@@ -19,5 +19,5 @@ simulation is not directly part of rock. Nevertheless the MARS simulation was de
 of Rock. The MARS Documentation could be found here [here](../../api/simulation/mars/doc/).
 MARS was developed as a standalone Simulation which runs on Windows/MacOS/Linux System, but for easier
 use within the ROCK Framework Rock core-developers started to integrate MARS into Rock, for more details 
-visit the [design background](file:///home/goldhoorn/dev-avalon/base/doc/out/documentation/simulation/100_design_background.html) page.
+visit the [design background](100_design_background.html) page.
 

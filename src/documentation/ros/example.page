@@ -106,6 +106,7 @@ node will have "input ports" and "output ports". The former are the topics it is
 subscribed to and the latter the topics that it is publishing.
 
 First of all use rock-display (comes with gui/vizkit) to check for available ROS services:   
+
 ~~~
 rock-display
 ~~~
