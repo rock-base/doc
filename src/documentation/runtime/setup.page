@@ -1,7 +1,7 @@
 ---
 title: Starting the system up
 sort_info: 50
---- name:content pipeline:tags,markdown,blocks
+--- name:content pipeline:tags,kramdown,blocks
 
 Setting up CORBA
 ----------------

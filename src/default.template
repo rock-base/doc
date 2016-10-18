@@ -1,4 +1,4 @@
---- pipeline:erb,tags,blocks,head
+--- pipeline:erb,tags,blocks
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 
@@ -10,10 +10,9 @@
   <meta name="description" content="The Robot Construction Kit - a robot software development environment" />
   <meta name="keywords" content="robotics,toolchain,components,field robotics,underwater robotics" />
   <meta name="author" content="The Rock core team" />
-  <% if context.node.node_info[:page].meta_info.has_key?('page_title') %>
-  <% if context.node.node_info[:page].meta_info['page_title'] %>
-  <title><%= context.node.node_info[:page].meta_info['page_title'] %></title>
-  <% end %>
+  <% page = context.node.node_info[:page] %>
+  <% if page && page_title = page.meta_info['page_title'] %>
+  <title><%= page_title.to_s %></title>
   <% else %>
   <title>{title: }</title>
   <% end %>
@@ -71,22 +70,24 @@
       </div>
     
       <div class="buffer">
-          <% if !Rock.flavors.empty?
-            to_root = "../" * (context.node.level - 1)
-            %>
-          <div class="flavor_nav">
-            <% if Rock.flavors.size > 1 %>
-            <span><em>Go to</em> 
-            <% Rock.flavors.each do |flavor|
-              if flavor != Rock.current_flavor %>
-              <a href="<%= to_root %>../<%= flavor %><%= context.node.acn %>"><%= flavor %></a>
+          <% if defined?(Rock) %>
+              <% if !::Rock.flavors.empty?
+                to_root = "../" * (context.node.level - 1)
+                %>
+              <div class="flavor_nav">
+                <% if ::Rock.flavors.size > 1 %>
+                <span><em>Go to</em> 
+                <% ::Rock.flavors.each do |flavor|
+                  if flavor != ::Rock.current_flavor %>
+                  <a href="<%= to_root %>../<%= flavor %><%= context.node.acn %>"><%= flavor %></a>
+                  <% end %>
+                <% end %>
+                </span>
+                <% end %>
+                <span><em>Flavor</em> <%= ::Rock.current_flavor %></span>
+              </div>
               <% end %>
             <% end %>
-            </span>
-            <% end %>
-            <span><em>Flavor</em> <%= Rock.current_flavor %></span>
-          </div>
-          <% end %>
       </div>
 
       <div class="leftnav">
@@ -95,31 +96,36 @@
 
     
       <div class="content2">
-          <% if context.node.node_info[:page].meta_info.has_key?('page_title') %>
-          <% if context.node.node_info[:page].meta_info['page_title'] %>
-          <div class="content2-pagetitle"><%= context.node.node_info[:page].meta_info['page_title'] %></div>
+          <% page = context.node.node_info[:page] %>
+          <% if page %>
+          <% if page.meta_info.has_key?('page_title') %>
+          <% if page.meta_info['page_title'] %>
+          <div class="content2-pagetitle"><%= page.meta_info['page_title'] %></div>
           <% end %>
           <% else %>
           <div class="content2-pagetitle">{title: }</div>
           <% end %>
+          <% end %>
           <div class="content2-container line-box">
               <div class="content2-container-1col">
+                  <% if page %>
                   <% if false %>
-                  <% if context.node.node_info[:page].blocks.has_key?('localtoc') %>
+                  <% if page.blocks.has_key?('localtoc') %>
                   <div markdown="1" class="localtoc">
                       <webgen:block name="localtoc" />
                   </div>
                   <% end %>
-                  <% if context.node.node_info[:page].blocks.has_key?('biglocaltoc') %>
+                  <% if page.blocks.has_key?('biglocaltoc') %>
                   <div markdown="1" class="biglocaltoc localtoc">
                       <webgen:block name="biglocaltoc" />
                   </div>
                   <% end %>
                   <% end %>
-                  <% if flavors = context.node.node_info[:page].meta_info['only_on'] %>
+                  <% if flavors = page.meta_info['only_on'] %>
                   <div class="warning">
                   The information present on this page is only valid on the <b><%= flavors %></b> flavors of Rock
                   </div>
+                  <% end %>
                   <% end %>
                   <webgen:block name="content" />
               </div>

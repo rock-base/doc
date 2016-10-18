@@ -1,7 +1,7 @@
 ---
 title: Cross-project dependencies
 sort_info: 500
---- name:content pipeline:tags,markdown,blocks
+--- name:content pipeline:tags,kramdown,blocks
 
 Each oroGen project can be separated in three things:
 
