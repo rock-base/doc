@@ -55,7 +55,7 @@ Installation: the easy way
 
  2. Create and "cd" into the directory in which you want to install the toolchain.
  3. To build the core system, use this
-    [bootstrap.sh](https://raw.githubusercontent.com/rock-core/buildconf/master/bootstrap.sh)
+    [bootstrap.sh](http://www.rock-robotics.org/stable/bootstrap.sh)
     script. Save it in the folder you just created. For other options, see
     below.
 
@@ -97,7 +97,7 @@ Installation: the easy way
 Other bootstrapping options
 ---------------------------
 
- * **to build all of Rock**, use [this bootstrap.sh](https://raw.githubusercontent.com/rock-core/buildconf-all/master/bootstrap.sh)
+ * **to build all of Rock**, use [this bootstrap.sh](http://www.rock-robotics.org/master/bootstrap.sh)
    instead of the one listed above. '''This is really meant for continuous
    integration servers'''. It is going to build all the packages that are
    defined within Rock, which is probably not what you want.
