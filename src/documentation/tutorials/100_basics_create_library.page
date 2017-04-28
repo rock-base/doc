@@ -316,6 +316,7 @@ rock_testsuite(test_suite suite.cpp
 After adapting the CMakeLists.txt for the test_suite we can just build the library again and run the test_suite.
 
 ~~~ text
+~/dev/tutorials/message_driver$ autoproj-test --enable
 ~/dev/tutorials/message_driver$ amake
 ~/dev/tutorials/message_driver$ ./build/test/test_suite
 Running 1 test case...
